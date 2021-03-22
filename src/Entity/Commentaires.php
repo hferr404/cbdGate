@@ -33,6 +33,18 @@ class Commentaires
      */
     private $produits;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Boutiques::class, inversedBy="commentaires")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $boutiques;
+
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateCreation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,4 +85,29 @@ class Commentaires
 
         return $this;
     }
+
+    public function getBoutiques(): ?Boutiques
+    {
+        return $this->boutiques;
+    }
+
+    public function setBoutiques(?Boutiques $boutiques): self
+    {
+        $this->boutiques = $boutiques;
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
 }

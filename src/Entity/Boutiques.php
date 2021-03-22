@@ -2,18 +2,15 @@
 
 namespace App\Entity;
 
-use DateTimeInterface;
-use App\Entity\Categorie;
-use App\Entity\Commentaires;
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ProduitRepository;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\BoutiquesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ * @ORM\Entity(repositoryClass=BoutiquesRepository::class)
  */
-class Produit
+class Boutiques
 {
     /**
      * @ORM\Id
@@ -28,9 +25,9 @@ class Produit
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
-    private $contenu;
+    private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -38,22 +35,31 @@ class Produit
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $dateCreation;
-
-   
-   
-    /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produits")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $categories;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="produits")
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="boutiques")
      */
     private $commentaires;
+
+
+    /**
+     *  
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="boutiques")
+     *
+     */
+
+     private $produits;
+
+     public function getProduits()
+     {
+        return $this->produits;
+     }
+
+     public function setProduits(string $produits): self
+     {
+         $this->produits = $produits;
+ 
+         return $this;
+     }
+
 
     public function __construct()
     {
@@ -77,14 +83,14 @@ class Produit
         return $this;
     }
 
-    public function getContenu(): ?string
+    public function getDescription(): ?string
     {
-        return $this->contenu;
+        return $this->description;
     }
 
-    public function setContenu(string $contenu): self
+    public function setDescription(string $description): self
     {
-        $this->contenu = $contenu;
+        $this->description = $description;
 
         return $this;
     }
@@ -101,32 +107,6 @@ class Produit
         return $this;
     }
 
-    public function getDateCreation(): ?DateTimeInterface
-    {
-        return $this->dateCreation;
-    }
-
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
-    {
-        $this->dateCreation = $dateCreation;
-
-        return $this;
-    }
-
-  
-
-    public function getCategories(): ?Categorie
-    {
-        return $this->categories;
-    }
-
-    public function setCategories(?Categorie $categories): self
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Commentaires[]
      */
@@ -139,7 +119,7 @@ class Produit
     {
         if (!$this->commentaires->contains($commentaire)) {
             $this->commentaires[] = $commentaire;
-            $commentaire->setProduits($this);
+            $commentaire->setBoutiques($this);
         }
 
         return $this;
@@ -149,8 +129,8 @@ class Produit
     {
         if ($this->commentaires->removeElement($commentaire)) {
             // set the owning side to null (unless already changed)
-            if ($commentaire->getProduits() === $this) {
-                $commentaire->setProduits(null);
+            if ($commentaire->getBoutiques() === $this) {
+                $commentaire->setBoutiques(null);
             }
         }
 
