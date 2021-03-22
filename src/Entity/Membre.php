@@ -42,6 +42,8 @@ class Membre
      */
     private $roles = [];
 
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,4 +108,6 @@ class Membre
 
         return $this;
     }
+
+    
 }
