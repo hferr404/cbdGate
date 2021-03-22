@@ -2,13 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\MembreRepository;
+use App\Entity\Membre;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MembreRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=MembreRepository::class)
  */
-class Membre
+
+
+
+class Membre implements UserInterface
 {
     /**
      * @ORM\Id
@@ -29,13 +37,29 @@ class Membre
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
+     *
+     *
+     *
+     * 
+     * 
      */
     private $password;
 
+
     /**
-     * @ORM\Column(type="string", length=255)
+     *  @Assert\EqualTo(propertyPath="password",message="Les mots de passe ne correspondent pas")
+     *
      */
-    private $confirm_password;
+
+
+    public $confirm_password;
+
+   
+
+
+    
 
     /**
      * @ORM\Column(type="json")
@@ -85,17 +109,7 @@ class Membre
         return $this;
     }
 
-    public function getConfirmPassword(): ?string
-    {
-        return $this->confirm_password;
-    }
 
-    public function setConfirmPassword(string $confirm_password): self
-    {
-        $this->confirm_password = $confirm_password;
-
-        return $this;
-    }
 
     public function getRoles(): ?array
     {
@@ -110,4 +124,12 @@ class Membre
     }
 
     
+    public function eraseCredentials() {}
+
+    public function getSalt() {} 
+ 
+  
+       
+
+
 }
