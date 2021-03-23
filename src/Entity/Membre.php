@@ -7,15 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MembreRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 
 /**
  * @ORM\Entity(repositoryClass=MembreRepository::class)
+ * @UniqueEntity(fields = {"email"},message = "Un compte est déja existant à cette adresse Email!")    
+ * 
+ * 
  */
-
-
-
 class Membre implements UserInterface
 {
     /**
@@ -27,11 +28,13 @@ class Membre implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $username;
 
