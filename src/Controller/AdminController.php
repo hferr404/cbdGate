@@ -115,7 +115,7 @@ class AdminController extends AbstractController
             $manager->persist($produit);
             $manager->flush();
 
-            // $this->addFlash('success', "Le produit " . $produit->getId() . " a bien été modifié");
+            // $this->addFlash('success', "Le produit " . $produit->getId() . " a bien été modifié");  
 
             return $this->redirectToRoute('admin_produit');
         }
@@ -125,7 +125,6 @@ class AdminController extends AbstractController
               "formProduit" => $formProduit->createView()
           ]);
     }
-
 
     
 }
