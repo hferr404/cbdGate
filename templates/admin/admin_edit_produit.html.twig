@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+     MODIFICATION DES PRODUITS
+
+{% endblock %}
+
+{% block body %}
+
+ <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">MODIFICATION DES PRODUITS N°: <span class=" badge alert-success mb-2">{{idProduit}}</span></h1>
+
+    
+
+ {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
+
+    {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
+
+    {{form_row (formProduit.prix, {'label' : "Prix produit"})}}
+
+    {{form_row (formProduit.categorie, {'label' : "Variante produit"})}}
+
+    {{form_row (formProduit.contenu, {'label' : "Description", 'attr' : {'rows' : 10} } ) }}
+
+    {{form_row (formProduit.image)}}
+
+     <div class="row">
+        <button type="submit" class="btn btn-primary shadow-lg">AJOUTER </button>
+       
+    </div>
+
+ {{form_end (formProduit)}}
+
+{% endblock %}

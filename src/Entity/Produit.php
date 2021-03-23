@@ -42,7 +42,12 @@ class Produit
      */
     private $dateCreation;
 
-   
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $prix;
+
+
    
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produits")
@@ -73,6 +78,17 @@ class Produit
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getPrix(): ?string
+    {
+        return $this->prix;
+    }
+    public function setPrix(string $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
