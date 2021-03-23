@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+BACK-OFFICE | GESTION DES ARTICLES
+
+{% endblock %}
+
+{% block body %}
+
+     <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | GESTION DES ARTICLES</h1>
+     
+        {# {% for message in app.flashes ('success') %} #}
+
+            <div class="col-md-3 alert alert-success p-2 rounded mx-auto text-center mb-3 shadow-lg"> </div>
+
+        {# {% endfor %} #}
+      
+        <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto">
+        <tr>
+        {% for item in colonne %}
+
+            {% if item == "dateCreation"%}
+
+            <th class="bg-dark">DATE</th>
+        
+               
+
+                    {% else %}
+            
+                    <th class="bg-dark">
+                    {{item|upper}}
+                    </th>
+
+                     
+
+            {% endif %}
+
+            {% endfor %}
+
+              
+
+               
+
+
+        
+        
+
+            
+            <th class="bg-dark">EDITER</th>
+            <th class="bg-dark">SUPPRIMER</th>
+        </tr>
+
+        
+                      {% for item2 in produit %}
+                        <tr>
+                          <td class="alert badge-warning my-5">{{item2.id}}</td>
+                          <td class="alert alert-info">{{item2.titre}}</td>
+                          <td class="alert alert-info">{{item2.contenu|striptags|slice(0, 300)}}...</td>
+                          <td class="alert alert-info"><img src="{{item2.image}}" class="img-admin-articles"></td>
+                          <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
+                          <td class="alert alert-info">{{item2.categorie.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>
+                          <td><a href="" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+                          <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
+                        </tr>  
+                    
+                    {% endfor %}   
+        
+    </table>
+
+{% endblock %}
