@@ -42,7 +42,6 @@ class AdminController extends AbstractController
     //     $produit->setTitre('CBD AUDI KUSH')
     //               ->setContenu('SE FUME');  
 
-
                 
 
     //   $form = $this->createForm(FormProduitType::class, $produit);
