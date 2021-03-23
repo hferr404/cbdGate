@@ -77,7 +77,6 @@ class AdminController extends AbstractController
     // //     //       catch(FileException $e)
     // //     //       {
 
-    // //     //       }
 
     // //           $articleCr->setImgae($newFileName);
     // //       }
