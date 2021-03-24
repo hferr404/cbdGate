@@ -54,7 +54,7 @@ class AdminController extends AbstractController
            $manager->remove($produit);
            $manager->flush();
 
-           $this->addFlash('success', "L'article n°: $id a bien été supprimé");
+           $this->addFlash('success', "Le produit n°: $id " ."(". $produit->getTitre() . ")" . " a bien été supprimé");
 
            return $this->redirectToRoute('admin_produit');
        }
@@ -104,9 +104,9 @@ class AdminController extends AbstractController
                 $manager->persist($produit);
                 $manager->flush();
             }
-        //     // return $this->redirectToRoute('produit_show', [
-        //     //   "id" => $produit->getId()
-        //   ]);
+             return $this->redirectToRoute('admin_produit', [
+            "id" => $produit->getId()
+            ]);
       
 
             return $this->render("admin/admin_edit_produit.html.twig", [
@@ -117,31 +117,7 @@ class AdminController extends AbstractController
     
 
 
-    // /**
-    //  * @Route("/admin/edit", name="admin_edit_produit")
-    //  */
-
-    // public function adminEditProduit(Produit $produit, Request $request, EntityManagerInterface $manager)
-    // {
-    //     $formProduit = $this->createForm(FormProduitType::class, $produit);
-
-    //     $formProduit->handleRequest($request);
-
-    //     if ($formProduit->isSubmitted() && $formProduit->isValid()) {
-    //         $manager->persist($produit);
-    //         $manager->flush();
-
-    //         // $this->addFlash('success', "Le produit " . $produit->getId() . " a bien été modifié");  
-
-    //         return $this->redirectToRoute('admin_produit');
-    //     }
-
-    //     return $this->render('admin/admin_edit_produit.html.twig', [
-    //         //   "idProduit" => $produit->getId(),
-    //           "formProduit" => $formProduit->createView()
-    //       ]);
-    // }
-
+   
 
 
     
@@ -149,9 +125,9 @@ class AdminController extends AbstractController
      * Méthode permettant d'afficher sous forme de tableau HTML les catégories stockées en BDD
      * 
      * @Route("/admin/categorie", name="admin_categorie")
-     * @Route("/admin/categorie/remove", name="admin_remove_category")
+     * @Route("/admin/categorie/{id}/remove", name="admin_remove_categorie")
      */
-    public function adminCategory(EntityManagerInterface $manager, CategorieRepository $repoCategorie, Categorie $categorie): Response
+    public function adminCategory(EntityManagerInterface $manager, CategorieRepository $repoCategorie, Categorie $categorie = null): Response
     {
         $colonnes = $manager->getClassMetadata(Categorie::class)->getFieldNames();
 
@@ -192,8 +168,8 @@ class AdminController extends AbstractController
      
 
     /**
-     * @Route("/admin/categorie/new", name="admin_form_categorie")
      * @Route("/admin/categorie/edit", name="admin_form_categorie")
+     * @Route("/admin/categorie/{id}/edit", name="admin_form_categorie")
      */
     public function adminFormCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie = null): Response
     {

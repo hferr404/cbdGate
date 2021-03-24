@@ -35,9 +35,9 @@
             <td class="alert alert-secondary my-5"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
             <td class="alert alert-warning my-5 text-danger"> {{item2.titre}}<hr> </td>
             <td class="alert alert-secondary my-5"> {{item2.description}} <hr> <i class="alert alert-success py-lg-1 shadow-sm"> <strong>nombre de produit(s) lié(s) à cette catégorie: {{item2.produits|length}}</strong</i> </td>
-            <td class="alert alert-primary my-5"><a href="{{path('admin_form_categorie')}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+            <td class="alert alert-primary my-5"><a href="{{path('admin_form_categorie', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
             <td class="alert alert-danger my-5"><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))"
-             href="" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
+             href="{{path('admin_remove_categorie', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
 
              </tr>
             {% endfor %}
@@ -48,7 +48,7 @@
          
       </table>
       <div class="container col-md-2 mx-auto">
-      <small class="container col-md-2 mx-auto"><a href="{{path('admin_form_categorie')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE CATEGORIE </a>  </small>
+      <small class="container col-md-2 mx-auto"><a href="" class="btn btn-primary text-center my-5"> AJOUTER UNE CATEGORIE </a>  </small>
       </div>
 
        
