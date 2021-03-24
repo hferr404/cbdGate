@@ -12,7 +12,7 @@ BACK-OFFICE | GESTION DES PRODUITS
      
         {% for message in app.flashes ('success') %}
 
-            <div class="col-md-3 alert alert-success p-2 rounded mx-auto text-center mb-3 shadow-lg"> </div>
+            <div class="col-md-3 alert alert-success p-2 rounded mx-auto text-center mb-3 shadow-lg"> {{ message }} </div>
 
         {% endfor %}
       
@@ -61,8 +61,8 @@ BACK-OFFICE | GESTION DES PRODUITS
                           <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
                           <td class="alert alert-info">{{item2.prix}}€</td>
                           <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>
-                          <td><a href="" class="btn btn-primary"><i class="fas fa-edit"></a></td>
-                          <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
+                          <td><a href="{{path('admin_edit_produit', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+                          <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="{{path('admin_remove_produit', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
                         </tr>  
                     
                     {% endfor %}   
