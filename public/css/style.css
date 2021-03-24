@@ -1,0 +1,152 @@
+.conteneur-base
+{
+    min-height: 85vh;
+    padding-right:0 !important;
+    padding-left:0 !important;
+    width: 100% !important;
+    
+}
+.container-fluid
+{
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
+
+footer
+{
+    padding-top: 20vh;
+}
+
+img
+{
+    max-height: 50vh;
+}
+
+.test
+{
+    background-image: url('https://picsum.photos/200/300');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pd
+{
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+.carou2
+{
+    max-width: 20vw;
+    display: flex !important;
+
+
+}
+
+.row 
+{
+    justify-content: center !important;
+}
+
+
+
+
+
+
+/***************************************************************/
+
+.hoverable{
+
+    backface-visibility: hidden;
+    vertical-align: middle;
+    position:relative;
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    tranform: translateZ(0);
+    transition-duration: .3s;
+    transition-property:transform;
+}
+
+.hoverable:before{
+    position:absolute;
+    pointer-events: none;
+    z-index:-1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height:10px;
+    width:90%;
+    opacity:0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    /* W3C */
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+}
+
+  
+.hoverable:hover, .hoverable:active, .hoverable:focus{
+    transform: translateY(-5px);
+}
+.hoverable:hover:before, .hoverable:active:before, .hoverable:focus:before{
+    opacity: 1;
+    transform: translateY(-5px);
+}
+  
+  
+  
+.bounce {
+    animation-name: bounce-animation;
+    animation-duration: 2s;
+}
+  
+  
+  
+  /*everything below here is just setting up the page, so dont worry about it */
+  
+  
+@media (min-width: 768px) {
+    .navbar{
+      text-align: center !important;
+      float: none;
+
+}
+  
+  
+
+  
+nav 
+{
+    background-color: rgba(0,0,0,1);
+    font-weight:600;
+    text-align:center !important;
+    color: white;
+    width: 100%;
+    text-transform:uppercase;
+
+}
+
+a:link, a:visited {
+    
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+
+}
+  
+#pute
+{
+    display: flex !important;
+    align-items: center !important;
+}
+
+#proute
+{
+    font-size: 1vw;
+}
+
+nav li
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
