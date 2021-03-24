@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Membre;
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MembreRepository;
 use Symfony\Component\Validator\Constraints as Assert;

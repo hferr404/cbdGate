@@ -8,7 +8,7 @@
 
 {% block body %}
 
- <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">MODIFICATION DES PRODUITS N°: <span class=" badge alert-success mb-2">{{idProduit}}</span></h1>
+ <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">MODIFICATION DES PRODUITS N°: <span class=" badge alert-success mb-2">{#{{idProduit}}#}</span></h1>
 
     
 
@@ -18,7 +18,7 @@
 
     {{form_row (formProduit.prix, {'label' : "Prix produit"})}}
 
-    {{form_row (formProduit.categorie, {'label' : "Variante produit"})}}
+    {{form_row (formProduit.categories, {'label' : "Variante produit"})}}
 
     {{form_row (formProduit.contenu, {'label' : "Description", 'attr' : {'rows' : 10} } ) }}
 

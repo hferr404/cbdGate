@@ -38,7 +38,7 @@ class Produit
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      */
     private $dateCreation;
 
@@ -54,6 +54,8 @@ class Produit
      * @ORM\JoinColumn(nullable=false)
      */
     private $categories;
+
+
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="produits")

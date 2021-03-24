@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Bienvenue dans le BACK-OFFICE{% endblock %}
 
 {% block body %}
 <style>
@@ -8,13 +8,40 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container-fluid" style="background-image: url('https://cdn-s-www.estrepublicain.fr/images/9E50CF5A-2C68-461F-B0D5-BF0DDA4F24C9/MF_contenu/cbd-vers-une-reglementation-plus-adaptee-1612963872.jpg');">
+    <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'F:/wf3_SYMFONY/cbdGate/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'F:/wf3_SYMFONY/cbdGate/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
+    {# <h4 class="text-center col-md-7 bg-dark text-white mx-auto py-2 rounded shadow-lg">Bienvenue
+
+        {% if app.user %}
+
+            <span class="text-info"> {{ app.user.username }} ✅</span>
+
+        {% endif %} 
+
+        dans votre espace personnalisé   
+    
+    </h4> #}
+
+    <div class="text-center mt-5 d-flex flex-column" style="margin-top: 400px !important;"> 
+
+
+</div>    
+
+    
+      
 </div>
+
+<div class="text-center mt-5 d-flex flex-column" style="position:relative !important;"> 
+
+        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_produit')}}">GESTION DES PRODUITS</a>
+
+        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="">GESTION DES CATEGORIES</a>
+
+        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="">GESTION DES COMMENTAIRES</a>
+
+        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="">GESTION DES MEMBRES </a>
+        <a class="btn btn-secondary col-md-2 shadow-lg" href="">GESTION DES BOUTIQUES</a>
+</div>    
+
 {% endblock %}
