@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+    BACK-OFFICE | CATEGORIE DES ARTICLES
+
+{% endblock %}
+
+{% block body %}
+
+ <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | CATEGORIES DES ARTICLES</h1>
+
+    {% for label, messages in app.flashes(['danger', 'success']) %}
+
+      {% for oneMessage in messages %}
+
+            <div class="col-md-3 bg-{{label}} p-2 rounded mx-auto text-center text-white mb-3 shadow-lg"> {{ oneMessage }}</div>
+
+      {% endfor %}
+
+    {% endfor %}
+
+      <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
+        <tr>
+        {% for item in colonnes %}
+
+         <th class="bg-dark">{{ item|upper }}</th>
+
+        {% endfor %}
+          <th class="bg-dark">EDITER</th>
+          <th class="bg-dark">SUPPRIMER</th>
+           <tr>
+            {% for item2 in categorie %}
+
+            <td class="alert alert-secondary my-5"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
+            <td class="alert alert-warning my-5 text-danger"> {{item2.titre}}<hr> </td>
+            <td class="alert alert-secondary my-5"> {{item2.description}} <hr> <i class="alert alert-success py-lg-1 shadow-sm"> <strong>nombre de produit(s) lié(s) à cette catégorie: {{item2.produits|length}}</strong</i> </td>
+            <td class="alert alert-primary my-5"><a href="{{path('admin_form_categorie')}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+            <td class="alert alert-danger my-5"><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))"
+             href="" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
+
+             </tr>
+            {% endfor %}
+
+          
+
+        </tr>
+         
+      </table>
+      <div class="container col-md-2 mx-auto">
+      <small class="container col-md-2 mx-auto"><a href="{{path('admin_form_categorie')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE CATEGORIE </a>  </small>
+      </div>
+
+       
+
+{% endblock %}    

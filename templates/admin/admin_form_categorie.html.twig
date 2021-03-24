@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+    BACK-OFFICE | MODIFICATION DES ARTICLES
+
+{% endblock %}
+
+{% block body %}
+
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+ BACK-OFFICE | MODIFICATION DE LA CATEGORIE N°: <span class=" badge alert-success mb-2"></span></h1>
+
+
+    {{form_start (formCatego, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
+
+        {{form_row (formCatego.titre, {'label' : "Titre de la catégorie"} ) }}
+
+        {{form_row (formCatego.description, {'label' : "Déscription de la catégorie", 'attr' : {'rows' : 6}})}}
+
+    
+        <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
+    
+
+ {{form_end (formCatego)}}
+
+
+
+ {% endblock %}
