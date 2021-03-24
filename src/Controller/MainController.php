@@ -7,6 +7,7 @@ use App\Entity\Produit;
 use App\Form\AddCommType;
 use App\Entity\Commentaires;
 use App\Repository\ProduitRepository;
+use App\Repository\BoutiquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class MainController extends AbstractController
 
 
     /**
-     * @Route("/main/index", name="main")
+     * @Route("/", name="main")
      */
     public function index(ProduitRepository $produitRepo): Response
     { // $repo = $this->getDoctrine()->getRepository(Article::class)
@@ -87,6 +88,37 @@ class MainController extends AbstractController
         ]);
     }
 
+    
+    
+    /**
+     * @Route("/boutiques", name="main_boutiques")
+     */
 
+
+     public function boutiques(BoutiquesRepository $boutiquesrepo): Response
+     {
+        dump($boutiquesrepo);
+
+        $boutiques = $boutiquesrepo->findAll();
+
+        return $this->render('main/boutiques.html.twig', [
+
+            'boutiques' => $boutiques
+        ]);
+        
+     }
+
+    /**
+     * @Route("/shop", name="main_shop")
+     */
+
+
+    public function shop(): Response
+    {
+       
+
+       return $this->render('main/shop.html.twig');
+       
+    }
     
 }

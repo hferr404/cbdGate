@@ -22,17 +22,12 @@ img
     max-height: 50vh;
 }
 
-.test
-{
-    background-image: url('https://picsum.photos/200/300');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .pd
 {
     padding-top: 20vh;
     padding-bottom: 20vh;
+    width: 100%;
 }
 
 .carou2
@@ -43,12 +38,22 @@ img
 
 }
 
+.logos li
+{
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
 .row 
 {
     justify-content: center !important;
+    width: 100%;
+ 
 }
 
-
+#cardeux
+{
+    padding-bottom: 20vh;
+}
 
 
 
@@ -122,6 +127,8 @@ nav
     color: white;
     width: 100%;
     text-transform:uppercase;
+    position: fixed !important;
+    z-index: 1;
 
 }
 
@@ -149,4 +156,92 @@ nav li
 {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+li 
+{
+    list-style: none;
+}
+
+/***********************************************FOOTER******************************************************************************/
+
+
+
+footer
+{
+    height: 23vh;
+    background-color: black !important;
+
+}
+
+.slogan
+{
+    font-size: 25px;
+    text-align: left;
+    
+}
+
+.midfooter
+{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+
+/*******************************************Boutique***********************************************************/
+
+
+.bb
+{
+    height: 30vh;
+}
+
+.titre
+{
+    text-align: center;
+    background-color: black;
+   
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    margin-bottom: 2vh;
+    
+}
+
+.titros
+{
+    height: 65vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    
+}
+h1
+{
+   margin-bottom: 0; 
+}
+
+.portas
+{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    
+}
+
+main 
+{
+    height: 300vh;
+}
+
+.nav2
+{
+    position: fixed;
+    width: 15vw;
+    height: 50vh;
+    background-color: blueviolet;
+    z-index: 1;
+    margin-top: 12vh;
+    opacity: 95%;
 }
