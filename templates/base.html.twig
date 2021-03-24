@@ -16,6 +16,7 @@
          crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <link rel="shortcut icon" type="image/x-icon" href="image/marijuana.png" />
             
         {% endblock %}
 
@@ -25,13 +26,14 @@
     <body>
         <header class="">
             <nav class="navbar navbar-expand-lg navbar-light col-md-12 mx-auto" id="proute">
+                <img src="image/marijuana.png" alt="" width="32px" height="32px" >
                 <a class="navbar-brand text-white" href="#">CBD GATE</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                     <ul class="nav navbar-nav mr-auto">
 
                     <li class="nav-item active">
-                        <a class="nav-link text-white hoverable" href="">ACCUEIL <span class="sr-only">(current)</span></a>
+                        <a class="nav-link text-white hoverable" href="{{ path('main') }}">ACCUEIL <span class="sr-only">(current)</span></a>
                     </li>
 
                     {% if app.user %}
@@ -54,7 +56,7 @@
                     {% endif %}
 
                     <li class="nav-item">
-                        <a class="nav-link text-white hoverable" href="">AFFICHAGE DES ARTICLES</a>
+                        <a class="nav-link text-white hoverable" href="{{ path('main_boutiques') }}">BOUTIQUES</a>
                     </li>
                   
                     <li class="nav-item">
@@ -97,8 +99,58 @@
 
         </main>
 
-        <footer class="text-center py-4 text-white bg-secondary">
-        &copy;BSR019 - HF
+        <footer class="text-center py-4 text-white ">
+        
+            <article class="hautfooter row">
+
+                <section class="titrelogo col-md-4  ">
+
+
+
+                    <img src="/image/marijuana.png" alt="" width="64px" height="64px" >
+                    <h2>CBDGATE</h2>
+                 
+
+                </section>
+
+
+
+                <section class="col-md-4">
+            
+                    <p class="slogan">Les meilleurs boutiques CBD pour vous !</p>
+            
+                </section>
+
+                <div class="col-md-4"></div>
+            
+            </article>
+
+
+            <article class="midfooter row" >
+            
+                 <a href=""><img src="/image/twitter.png" alt=""></a>
+
+                 <a href=""><img src="/image/instagram.png" alt=""></a>
+
+                 <a href=""><img src="/image/facebook.png" alt=""></a>
+
+                 <a href=""><img src="/image/contact.png" alt=""></a>
+                 
+            
+            </article>
+
+
+            <article class="row">
+            
+                <p>2021 copyright cbdGate tous droits résevé</p>
+            
+            </article>
+
+
+
+
+
+
         </footer>
 
         {% block javascripts %}
@@ -108,6 +160,7 @@
             crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
             crossorigin="anonymous"></script>
+            <script src="js/script.js"></script>
         {% endblock %}
     </body>
 </html>
