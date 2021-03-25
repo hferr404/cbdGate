@@ -124,7 +124,6 @@ class AdminController extends AbstractController
 
     
     /**
-     * Méthode permettant d'afficher sous forme de tableau HTML les catégories stockées en BDD
      * 
      * @Route("/admin/categorie", name="admin_categorie")
      * @Route("/admin/categorie/{id}/remove", name="admin_remove_categorie")
