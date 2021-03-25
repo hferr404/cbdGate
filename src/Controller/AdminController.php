@@ -103,15 +103,17 @@ class AdminController extends AbstractController
  
                 $manager->persist($produit);
                 $manager->flush();
+
+                return $this->redirectToRoute('admin_produit', [
+                    "id" => $produit->getId()
+                ]);
             }
-             return $this->redirectToRoute('admin_produit', [
-            "id" => $produit->getId()
-            ]);
+            
       
 
             return $this->render("admin/admin_edit_produit.html.twig", [
             'formProduit' => $form->createView(),
-            'editMode' => $produit->getId()
+            // 'editMode' => $produit->getId()
         ]);
         }
     
