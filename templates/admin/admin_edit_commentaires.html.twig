@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+  BACK-OFFICE | MODIFIER DES COMMENTAIRES
+
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+    MODIFICATION DU COMMENTAIRE <small class="badge alert-success mb-1 py-0"><strong> {{commentId}} </strong> </small></h1>
+
+    
+    {{form_start (commentForm, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
+
+      {{form_row (commentForm.auteur, {'label' : 'Auteur du commentaire'} ) }}
+      {{form_row (commentForm.contenu, {'label' : 'Contenu du commentaire', 'attr' : {'rows' : 6}} ) }}
+    
+
+      <button type="submit" class="btn btn-primary">MODIFIER</button>
+
+    {{form_end (commentForm)}}  
+
+
+ {% endblock %}
