@@ -8,6 +8,8 @@ BACK-OFFICE | GESTION DES PRODUITS
 
 {% block body %}
 
+<div class="container-fluid" style="background">
+
      <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">GESTION DES PRODUITS</h1>
      
         {% for message in app.flashes ('success') %}
@@ -57,7 +59,7 @@ BACK-OFFICE | GESTION DES PRODUITS
                           <td class="alert badge-warning my-5">{{item2.id}}</td>
                           <td class="alert alert-info">{{item2.titre}}</td>
                           <td class="alert alert-info">{{item2.contenu|striptags|slice(0, 300)}}...</td>
-                          <td class="alert alert-info"><img src="{{item2.image}}" class="img-admin-articles"></td>
+                          <td class="alert alert-info"><img class="hoverable" src="{{item2.image}}" class="img-admin-articles"></td>
                           <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
                           <td class="alert alert-info">{{item2.prix}}€</td>
                           <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>

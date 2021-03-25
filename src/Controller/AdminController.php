@@ -2,19 +2,26 @@
 
 namespace App\Controller;
 
+use App\Entity\Membre;
 use App\Entity\Produit;
+use App\Entity\Boutiques;
 use App\Entity\Categorie;
+use App\Entity\Commentaires;
+use App\Form\CommentFormType;
 use App\Form\FormProduitType;
-use App\Form\CategoryFormType;
+use App\Form\InscriptionType;
 use App\Form\CategorieFormType;
+use App\Repository\MembreRepository;
+
 use App\Repository\ProduitRepository;
+use App\Repository\BoutiquesRepository;
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\CommentairesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
-
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -74,7 +81,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/edit", name="admin_edit_produit")
      */
-    public function create(Produit $produit = null, Request $request, EntityManagerInterface $manager): Response
+    public function adminEditProduit(Produit $produit = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
         if (!$produit)
          {
@@ -84,16 +91,44 @@ class AdminController extends AbstractController
         $produit->setTitre('CBD AUDI KUSH')
                   ->setContenu('SE FUME');
 
-                
+
 
         $form = $this->createForm(FormProduitType::class, $produit);
 
         $form->handleRequest($request);
 
-     
 
         if ($form->isSubmitted() && $form->isValid())
          {
+              /** @var UploadedFile */    
+            $imageFile = $form->get('image')->getData();
+
+            dump($imageFile);
+
+            if($imageFile)
+            {
+               
+                $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                dump($originalFileName);
+
+                $safeFileName = $slugger->slug($originalFileName);
+                dump($originalFileName);
+
+                $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                try
+                {
+                    $imageFile->move(
+                        $this->getParameter('image_directory')
+                    );
+                }
+                catch(FileException $e)
+                {
+
+                }
+
+                $produit->setImage($newFileName);
+            }
 
             if(!$produit->getId())
             {
@@ -116,6 +151,37 @@ class AdminController extends AbstractController
             // 'editMode' => $produit->getId()
         ]);
         }
+
+
+
+         /**
+        * 
+        *@Route("/admin/produit/new", name="admin_new_produit")
+        *@Route("/admin/produit/new", name="admin_add_produit")
+        */
+        public function adminAddProduit(Request $request, EntityManagerInterface $manager): Response
+        {
+            $produit = new Produit;
+            $formProduit = $this->createForm(FormProduitType::class, $produit);
+
+            $formProduit->handleRequest($request);
+
+            if($formProduit->isSubmitted() && $formProduit->isValid())
+            {
+                $manager->persist($produit);
+                $manager->flush();
+
+                $this->addFlash('success', "La catégorie  " . $produit->getTitre() . " a bien été ajoutée");
+
+                return $this->redirectToRoute("admin_produit");
+            } 
+
+            return $this->render('admin/admin_add_produit.html.twig', [
+                'nameProduit' => $produit->getTiTre(),
+                'formProduit' => $formProduit->createView()
+                ]);
+        }
+
     
 
 
@@ -124,7 +190,6 @@ class AdminController extends AbstractController
 
     
     /**
-     * Méthode permettant d'afficher sous forme de tableau HTML les catégories stockées en BDD
      * 
      * @Route("/admin/categorie", name="admin_categorie")
      * @Route("/admin/categorie/{id}/remove", name="admin_remove_categorie")
@@ -136,13 +201,10 @@ class AdminController extends AbstractController
         dump($colonnes);
         dump($categorie);
 
-        // Si la variable $category retourne TRUE,cela veut dire qu'elle contient une categorie de la BDD, alors on entre dans le IF et on tente d'executer la suppression
+        
         if($categorie)
         {
-            // Nous avons une relation entre la table Article et Category et une contrainte d'intégrité en RESTRICT
-            // Donc ne pourrons pas supprimer la catégorie si 1 article lui est toujours associé
-            // getArticles() de l'entité Category retourne tout les articles associés à la catégorie (relation bi-drirectionnelle)
-            // Si getArticles() retourne un résultat vide, cela veut dire qu'il n'y a plus aucun article associé à la catégorie, nous pouvons dcon la supprimer
+           
             if($categorie->getProduits()->isEmpty())
             {
                 $manager->remove($categorie);
@@ -150,7 +212,7 @@ class AdminController extends AbstractController
 
                 $this->addFlash('success', "La catégorie a été supprimée avec succès !");
             }
-            else // Sinon dans tout les autres cas, des articles sont toujours associés à la catégorie, on affiche un message erreur utilisateur
+            else 
             {
                 $this->addFlash('danger', "Il n'est pas possible de supprimer la catégorie car des articles y sont toujours associés !");
             }
@@ -158,7 +220,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_categorie');
         }
 
-        $categorieBdd = $repoCategorie->findAll(); // SELECT * FROM category + FETCH_ALL
+        $categorieBdd = $repoCategorie->findAll(); 
 
         dump($categorieBdd);
 
@@ -175,8 +237,7 @@ class AdminController extends AbstractController
      */
     public function adminFormCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie = null): Response
     {
-        // Si l'objet entité $category n'est pas, est null,  cela veut dire que nous sommes sur la route '/admin/category/new', que nous souhaitons créer une nouvelle catégorie, alors on entre dans la condition IF
-        // Si l'objet entité $category retourne true, est bien existant en BDD, cela veut dire que nous sommes sur la route "/admin/category/{id}/edit", l'id envoyé dans l'URL a été selctionné en BDD, nous souhaitons modifier la catégorie existante
+        
         if(!$categorie)
         {
             $categorie = new Categorie;
@@ -184,29 +245,27 @@ class AdminController extends AbstractController
 
         $formCatego = $this->createForm(CategorieFormType::class, $categorie, [
             'validation_groups' => ['categorie']
-        ]); // getForm()
+        ]); 
 
         dump($request);
 
-        $formCatego->handleRequest($request); // $_POST['title'] -->  envoi dans -->setTitle($_POST['title'])
+        $formCatego->handleRequest($request); 
 
         dump($categorie);
 
         if($formCatego->isSubmitted() && $formCatego->isValid())
         {
-            // Si l'id n'est pas connu, cela veut dire que c'est une insertion, on entre dans le IF et on définit
+            
             if(!$categorie->getId())
                 $message = "La catégorie " . $categorie->getTitre() . " a été enregistrée avec succès !";
             else 
                 $message = "La catégorie " . $categorie->getTitre() . " a été modifiée avec succès !";
 
-            $manager->persist($categorie); // on prépare et on garder en mémoire la requete INSERT
+            $manager->persist($categorie); 
             $manager->flush();
 
             // // On définit un message de validation après l'execution de la requete SQL INSERT
-            // $this->addFlash('success', $message);
-
-            // Aprés l'execution de la requete INSERT, on redirige l'utilisateur vers l'affichage des catégories dans le BackOffice
+           
             return $this->redirectToRoute('admin_categorie');
         }
 
@@ -214,6 +273,225 @@ class AdminController extends AbstractController
             'formCatego' => $formCatego->createView()
         ]);  
     }
+
+
+    
+        /**
+        * 
+        *@Route("/admin/category/new", name="admin_new_categorie")
+        *@Route("/admin/category/new", name="admin_add_categorie")
+        */
+        public function adminFormCategorie2(Request $request, EntityManagerInterface $manager): Response
+        {
+            $categorie = new Categorie;
+            $formCatego = $this->createForm(CategorieFormType::class, $categorie,[
+                'validation_groups' => ['categorie'] ]);
+
+            $formCatego->handleRequest($request);
+
+            if($formCatego->isSubmitted() && $formCatego->isValid())
+            {
+                $manager->persist($categorie);
+                $manager->flush();
+
+                $this->addFlash('success', "La catégorie  " . $categorie->getTitre() . " a bien été ajoutée");
+
+                return $this->redirectToRoute("admin_categorie");
+            } 
+
+            return $this->render('admin/admin_add_categorie.html.twig', [
+                'nameCatego' => $categorie->getTiTre(),
+                'formCatego' => $formCatego->createView()
+                ]);
+        }
+
+
+
+
+
+    /**
+     * @Route("/admin/boutiques", name="admin_boutiques")
+     * @Route("/admin/{id}/remove", name="admin_remove_boutiques")
+     */
+
+    public function adminBoutiques(EntityManagerInterface $manager, BoutiquesRepository $boutiquesRepo, $boutiques = null): Response
+    {
+
+        $colonnes = $manager->getClassMetadata(Produit::class)->getFieldNames();
+
+  
+
+       $boutiquesBdd = $boutiquesRepo->findAll();
+
+     
+
+       if($boutiques)
+       {
+           $id = $boutiques->getId();
+
+           $manager->remove($boutiques);
+           $manager->flush();
+
+           $this->addFlash('success', "Le produit n°: $id " ."(". $boutiques->getTitre() . ")" . " a bien été supprimé");
+
+           return $this->redirectToRoute('admin_produit');
+       }
+
+        return $this->render('admin/admin_produit.html.twig', [
+            'colonnes' => $colonnes,
+            'boutiques' => $boutiquesBdd
+        ]);
+    }
+
+        
+        /**
+         * @Route("/admin/commentaires", name="admin_commentaires")
+         * @Route("/admin/comment/{id}/remove", name="admin_remove_comment")
+         */
+        public function adminComment(Commentaires $comment = null, EntityManagerInterface $manager, CommentairesRepository $commentRepo): Response
+        {
+            $colonnes = $manager->getClassMetadata(Commentaires::class)->getFieldNames();
+            $commentBdd = $commentRepo->findAll();
+
+
+            dump($commentBdd);
+
+            if($comment)
+            {
+
+                $id = $comment->getId();
+
+                $auteur = $comment->getAuteur();
+
+                $date = $comment->getDateCreation();
+
+                $dateFormat = $date->format('Y-m-d à H:i:s');
+                   
+                   
+                    $manager->remove($comment);
+                    $manager->flush();
+
+                    $this->addFlash('success', "Le commentaire n°$id, posté par $auteur, le $dateFormat a bien été supprimé");
+
+                    return $this->redirectToRoute("admin_commentaires");
+                 
+                
+                
+            }
+
+
+            return $this->render('admin/admin_commentaires.html.twig', [
+                'commentBdd' => $commentBdd,
+                'colonnes' => $colonnes
+            ]);
+        }
+
+       
+       
+       
+        /**
+         * @Route("/admin/comment/{id}/edit", name="admin_edit_commentaires")
+         */
+        public function editComment(Commentaires $comment, Request $request, EntityManagerInterface $manager, Produit $produit= null): Response
+        {
+            $commentForm = $this->createForm(CommentFormType::class, $comment);
+
+            $commentForm->handleRequest($request);
+
+
+             if ($commentForm != "produit" && $commentForm != "dateCreation") {
+                 if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                     $manager->persist($comment);
+                     $manager->flush();
+
+                     $this->addFlash('success', "Le commentaire " . $comment->getId() . ", posté par " . $comment->getAuteur() .  " a bien été modifiée");
+
+                     return $this->redirectToRoute("admin_comments");
+                 }
+             }
+
+            return $this->render('admin/admin_edit_commentaires.html.twig', [
+                'commentForm' => $commentForm->createView(),
+                'commentId' => $comment->getId()
+            ]);
+        }
+
+
+        
+        
+
+
+         /**
+         *@Route("/admin/membre", name="admin_membre")
+         *@Route("/admin/membre/{id}/remove", name="admin_remove_membre")
+         *
+         * 
+         */
+        public function adminUsers(EntityManagerInterface $manager, MembreRepository $membreRepo, Membre $membre = null): Response
+        {
+            $colonnes = $manager->getClassMetadata(Membre::class)->getFieldNames();
+            $membreBdd = $membreRepo->findAll();
+
+
+            dump($membreBdd);
+
+          
+
+            if ($membre)
+             {
+                $id = $membre->getId();
+
+                $auteur = $membre->getUsername();
+
+
+                $manager->remove($membre);
+                $manager->flush();
+
+                $this->addFlash('success', "L'utilisateur' n°$id =>  $auteur a bien été supprimé");
+
+                return $this->redirectToRoute("admin_membre");
+            }    
+            
+
+            return $this->render('admin/admin_membre.html.twig', [
+                    'membreBdd' => $membreBdd,
+                    'colonnes' => $colonnes
+                ]);
+        }
+
+
+        
+        /**
+         * @Route("/admin/membre/{id}/edit", name="admin_edit_membre")
+         */
+        public function editMembre(Membre $membre, Request $request, EntityManagerInterface $manager): Response
+        {
+            $membreForm = $this->createForm(InscriptionType::class, $membre);
+
+            $membreForm->handleRequest($request);
+
+
+              
+               
+                  if ($membreForm->isSubmitted() && $membreForm->isValid())
+                  {
+                      $manager->persist($membre);
+                      $manager->flush();
+
+                       $this->addFlash('success', "L'utlisateur' " . $membre->getId() . " => " . $membre->getUsername() .  " a bien été modifiée");
+
+                      return $this->redirectToRoute("admin_membre");
+                  }
+                  
+             
+            return $this->render('admin/admin_edit_membre.html.twig', [
+                'membreForm' => $membreForm->createView(),
+                'membreId' => $membre->getId(),
+                'membreName' => $membre->getUsername()
+            ]);
+        }
+    
+
 
     
 }

@@ -19,7 +19,22 @@ class FormProduitType extends AbstractType
             ->add('titre')
             ->add('prix')
             ->add('contenu')
-            ->add('image')
+            ->add('image',FileType::class,[
+                "label" => "Photo de l'article",
+                "mapped" => true,
+                "required" => false,
+                "constraints" => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/png',
+                            'image/jpeg'
+                        ],
+                        'mimeTypesMessage' => 'Extensions acceptées: jpeg/jpg/png'
+                    ])
+                ]
+            ])
             ->add('categories', EntityType::class, [
                 "class" => Categorie::class,
                 "choice_label" => "titre"
