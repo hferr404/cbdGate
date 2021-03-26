@@ -14,14 +14,22 @@
 
     {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
 
-        {{form_row (formProduit.titre, {'label' : "Titre de la catégorie"} ) }}
+      
+        {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
 
-        {{form_row (formProduit.description, {'label' : "Déscription de la catégorie", 'attr' : {'rows' : 6}})}}
+        {{form_row (formProduit.prix, {'label' : "Prix produit"})}}
+
+        {{form_row (formProduit.categories, {'label' : "Variante produit"})}}
+
+        {{form_row (formProduit.contenu, {'label' : "Description", 'attr' : {'rows' : 10} } ) }}
+
+        {{form_row (formProduit.image)}}
+
 
 
     <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
 
- {{form_end (formCatego)}}
+ {{form_end (formProduit)}}
 
 
 
