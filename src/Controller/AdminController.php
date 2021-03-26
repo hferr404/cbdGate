@@ -161,7 +161,6 @@ class AdminController extends AbstractController
 
          /**
         * 
-        *@Route("/admin/produit/new", name="admin_new_produit")
         *@Route("/admin/produit/new", name="admin_add_produit")
         */
         public function adminAddProduit(Request $request, EntityManagerInterface $manager): Response

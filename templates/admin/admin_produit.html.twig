@@ -67,8 +67,12 @@ BACK-OFFICE | GESTION DES PRODUITS
                           <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="{{path('admin_remove_produit', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
                         </tr>  
                     
-                    {% endfor %}   
+                    {% endfor %} 
+
+                   
         
     </table>
 
+      <div class="container col-md-5 d-flex justify-center">
+     <a class="btn btn-primary col-md-5 mx-auto" href="{{path('admin_add_produit')}}">AJOUTER</a>
 {% endblock %}
