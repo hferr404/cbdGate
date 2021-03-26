@@ -42,7 +42,7 @@ class Boutiques
 
     /**
      *  
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="boutiques")
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="boutiques")  
      *
      */
      private $produits;
@@ -103,7 +103,7 @@ class Boutiques
         return $this->produits;
     }
 
-    public function setCategory(?Produit $produit): self
+    public function setProduits(?Produit $produit): self
     {
         $this->produit = $produit;
 
