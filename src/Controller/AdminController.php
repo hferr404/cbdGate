@@ -8,13 +8,12 @@ namespace App\Controller;
 
 use App\Entity\Membre;
 use App\Entity\Produit;
-use App\Entity\Boutiques;
 use App\Entity\Categorie;
 use App\Entity\Commentaires;
 use App\Form\CommentFormType;
 use App\Form\FormProduitType;
-use App\Form\InscriptionType;
 use App\Form\CategorieFormType;
+use App\Form\InscriptMembreType;
 use App\Repository\MembreRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\BoutiquesRepository;
@@ -504,7 +503,7 @@ class AdminController extends AbstractController
          */
         public function editMembre(Membre $membre, Request $request, EntityManagerInterface $manager): Response
         {
-            $membreForm = $this->createForm(InscriptionType::class, $membre);
+            $membreForm = $this->createForm(InscriptMembreType::class, $membre);
 
             $membreForm->handleRequest($request);
 

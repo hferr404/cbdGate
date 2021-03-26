@@ -14,7 +14,6 @@ class InscriptMembreType extends AbstractType
         $builder
             ->add('email')
             ->add('username')
-            ->add('password')
             ->add('roles')
         ;
     }
