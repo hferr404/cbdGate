@@ -4,32 +4,61 @@
 {% block title %}Boutiques{% endblock %}
 
 {% block body %}
+<div class="maybe">
 
-<main>
+<div class="lol">
+    <div class="men_ex" id="men_ex">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
 
-
-<div class="nav2">
-
+    <div class="show_hide" id="show_hide">
+        <img src="{{ asset('image/arrow.png') }}" alt="">
+    </div>
 
 </div>
+
+
+{########################################}
+
  <div class="titros"> 
 
-        <img class="portas" src="image/porte.png" width="400px" height="400px" alt="">
+        <img class="portas" src="{{ asset('image/marijuana.png') }}" alt="">
         <h1 class=" titre">Découvrez nos boutiques :)</h1>
  </div>
 
 
-<section class="row">
+<section>
 
-
-
-    <div class="col-md-12 bb">
-    
-    <a href="{{ path('main_shop') }}"><img src="image/Banniere_DeliHump.png" alt=""></a>
+    <div class="border-top border-dark">
+    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou1.png') }}" alt=""></a>
     </div>
+
 </section>
 
-<hr>
-</main>
+<section>
+
+    <div class="border-top border-dark">
+    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou2.png') }}" alt=""></a>
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="border-top border-dark">
+    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou3.png') }}" alt=""></a>
+    </div>
+
+</section>
+
+
+</div>
 
 {% endblock %}

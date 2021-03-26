@@ -23,7 +23,7 @@
                 <th>{{item2.description}}</th>
                 <th><img scr="{{item2.image}}" alt="{{item2.titre}}"></th>
                 <th><a href="{{path('admin_edit_boutique', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></th>
-                <td><a href="" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cet article ?'))"><i class="fas fa-trash-alt"></i></a></td>
+                <td><a href="{{path('admin_remove_boutique', {'id':  item2.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cet article ?'))"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
                 
         {% endfor %}

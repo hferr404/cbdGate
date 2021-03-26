@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+
+    BACK-OFFICE | GESTION DES MEMBRES
+
+{% endblock %}
+
+{% block body %}
+
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+ GESTION DES MEMBRES</span></h1>
+
+    <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
+{% for label, messages in app.flashes(['danger', 'success']) %}
+
+            {% for oneMessage in messages %}
+
+                <div class="col-md-3 bg-{{label}} p-2 rounded mx-auto text-center text-white mb-3 shadow-lg"> {{ oneMessage }}</div>
+
+            {% endfor %}
+
+         {% endfor %}
+         
+        <tr>
+        {% for item in colonnes %}
+            
+            {% if item == "username" %}
+
+                <th class="bg-dark">NOM DU MEMBRE</th>
+
+            {% elseif item != "password" %}
+
+
+            <th class="bg-dark">{{ item|upper }}</th>
+            
+
+            {% endif %}
+
+        {% endfor %}
+
+            <th class="bg-primary">EDITER</th>
+            <th class="bg-danger">SUPPRIMER</th>
+
+        <tr>
+
+        {% for item2 in membreBdd %} 
+
+            
+          
+
+            <td class="alert alert-secondary my-5"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
+            <td class="alert alert-warning my-5"> {{item2.email}}  </td>
+            <td class="alert alert-secondary my-5"> {{item2.username}}  </td>
+            {% if item2.roles == ["ROLE_ADMIN"] %}
+
+            <td class="alert alert-secondary"><small class="alert alert-danger shadow-sm"> ADMINISTRATEUR </small> </td>
+
+            {% elseif item2.roles == ["ROLE_USER"] %}
+
+            <td class="alert alert-secondary"><small class="alert alert-primary shadow-sm"> UTILISATEUR </small> </td> 
+
+            {% else %}
+
+            <td class="alert alert-secondary my-5"> {{item2.roles}} </td>
+             {% endif %}
+            <td class="alert alert-primary my-5"><a href="{{path('admin_edit_membre', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+            <td class="alert alert-danger my-5"><a onclick="return(confirm('Voulez-vous réellement supprimer cet utilisateur?'))"
+             href="{{path('admin_remove_membre', {'id' : item2.id})}}" class="btn btn-danger shadow-sm"><i class="fas fa-trash alt"></a></td>
+
+            
+
+        </tr>
+        
+
+        {% endfor %}  
+
+        
+         
+
+        </tr>
+    </table>    
+
+
+ {% endblock %}
