@@ -8,10 +8,12 @@ namespace App\Controller;
 
 use App\Entity\Membre;
 use App\Entity\Produit;
+use App\Entity\Boutiques;
 use App\Entity\Categorie;
 use App\Entity\Commentaires;
 use App\Form\CommentFormType;
 use App\Form\FormProduitType;
+use App\Form\BoutiqueFormType;
 use App\Form\CategorieFormType;
 use App\Form\InscriptMembreType;
 use App\Repository\MembreRepository;
