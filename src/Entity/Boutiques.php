@@ -48,6 +48,7 @@ class Boutiques
      private $produits;
 
 
+
     //  public function getProduits(): ?Produit
     //  {
     //      return $this->produits;
@@ -59,6 +60,7 @@ class Boutiques
  
     //      return $this;
     //  }
+
 
 
     public function __construct()
