@@ -11,7 +11,7 @@
 <div class="container-fluid" style="background-image: url('https://cdn-s-www.estrepublicain.fr/images/9E50CF5A-2C68-461F-B0D5-BF0DDA4F24C9/MF_contenu/cbd-vers-une-reglementation-plus-adaptee-1612963872.jpg');">
     <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE</h1>
 
-    {# <h4 class="text-center col-md-7 bg-dark text-white mx-auto py-2 rounded shadow-lg">Bienvenue
+    <h4 class="text-center col-md-7 bg-dark text-white mx-auto py-2 rounded shadow-lg">Bienvenue
 
         {% if app.user %}
 
@@ -21,7 +21,7 @@
 
         dans votre espace personnalisé   
     
-    </h4> #}
+    </h4>
 
     <div class="text-center mt-5 d-flex flex-column" style="margin-top: 400px !important;"> 
 
@@ -38,10 +38,7 @@
 
         <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_categorie')}}">GESTION DES CATEGORIES</a>
 
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="">GESTION DES COMMENTAIRES</a>
-
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="">GESTION DES MEMBRES </a>
-        <a class="btn btn-secondary col-md-2 shadow-lg" href="{{path('admin_boutiques')}}">GESTION DES BOUTIQUES</a>
+        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_commentaires')}}">GESTION DES COMMENTAIRES</a>
 </div>    
 
 {% endblock %}

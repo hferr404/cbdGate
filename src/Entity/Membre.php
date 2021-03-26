@@ -56,7 +56,6 @@ class Membre implements UserInterface
      *
      */
 
-
     public $confirm_password;
 
    

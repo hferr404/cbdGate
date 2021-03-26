@@ -2,26 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Membre;
+use App\Entity\Boutiques;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class InscriptMembreType extends AbstractType
+class BoutiqueFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('username')
-            ->add('roles')
+
+            ->add('titre')
+            ->add('description')
+            ->add('image')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Membre::class,
+            'data_class' => Boutiques::class,
         ]);
     }
 }
