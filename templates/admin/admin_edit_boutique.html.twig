@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACK-OFFICE | MODIFICATION DES BOUTIQUES
+{% endblock %}
+{% block body %}
+    <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | MODIFICATION DES BOUTIQUES</h1>
+    
+    {{ form_start(formBoutique) }}
+    {{ form_row(formBoutique.titre, {'attr': {'placeholder': 'Titre'}}) }}
+    {{ form_row(formBoutique.description, {'attr': {'placeholder': 'Description'}}) }}
+    {{ form_row(formBoutique.image, {'attr': {'placeholder': 'Inserer image'}}) }}
+    
+    <button type="submit" class="btn btn-primary shadow-lg">Modifier l'article</button>
+   {{form_end(formBoutique)}}
+{% endblock %}
