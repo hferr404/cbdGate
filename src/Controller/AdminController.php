@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Boutiques;
 use App\Entity\Produit;
 use App\Entity\Categorie;
+use App\Form\BoutiqueFormType;
 use App\Form\FormProduitType;
-use App\Form\CategoryFormType;
 use App\Form\CategorieFormType;
+use App\Repository\BoutiquesRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -103,10 +105,11 @@ class AdminController extends AbstractController
  
                 $manager->persist($produit);
                 $manager->flush();
-            }
-             return $this->redirectToRoute('admin_produit', [
+                return $this->redirectToRoute('admin_produit', [
             "id" => $produit->getId()
             ]);
+            }
+             
       
 
             return $this->render("admin/admin_edit_produit.html.twig", [
@@ -134,13 +137,10 @@ class AdminController extends AbstractController
         dump($colonnes);
         dump($categorie);
 
-        // Si la variable $category retourne TRUE,cela veut dire qu'elle contient une categorie de la BDD, alors on entre dans le IF et on tente d'executer la suppression
+        
         if($categorie)
         {
-            // Nous avons une relation entre la table Article et Category et une contrainte d'intégrité en RESTRICT
-            // Donc ne pourrons pas supprimer la catégorie si 1 article lui est toujours associé
-            // getArticles() de l'entité Category retourne tout les articles associés à la catégorie (relation bi-drirectionnelle)
-            // Si getArticles() retourne un résultat vide, cela veut dire qu'il n'y a plus aucun article associé à la catégorie, nous pouvons dcon la supprimer
+            
             if($categorie->getProduits()->isEmpty())
             {
                 $manager->remove($categorie);
@@ -148,7 +148,7 @@ class AdminController extends AbstractController
 
                 $this->addFlash('success', "La catégorie a été supprimée avec succès !");
             }
-            else // Sinon dans tout les autres cas, des articles sont toujours associés à la catégorie, on affiche un message erreur utilisateur
+            else
             {
                 $this->addFlash('danger', "Il n'est pas possible de supprimer la catégorie car des articles y sont toujours associés !");
             }
@@ -173,8 +173,6 @@ class AdminController extends AbstractController
      */
     public function adminFormCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie = null): Response
     {
-        // Si l'objet entité $category n'est pas, est null,  cela veut dire que nous sommes sur la route '/admin/category/new', que nous souhaitons créer une nouvelle catégorie, alors on entre dans la condition IF
-        // Si l'objet entité $category retourne true, est bien existant en BDD, cela veut dire que nous sommes sur la route "/admin/category/{id}/edit", l'id envoyé dans l'URL a été selctionné en BDD, nous souhaitons modifier la catégorie existante
         if(!$categorie)
         {
             $categorie = new Categorie;
@@ -182,29 +180,24 @@ class AdminController extends AbstractController
 
         $formCatego = $this->createForm(CategorieFormType::class, $categorie, [
             'validation_groups' => ['categorie']
-        ]); // getForm()
+        ]);
 
         dump($request);
 
-        $formCatego->handleRequest($request); // $_POST['title'] -->  envoi dans -->setTitle($_POST['title'])
+        $formCatego->handleRequest($request);
 
         dump($categorie);
 
         if($formCatego->isSubmitted() && $formCatego->isValid())
         {
-            // Si l'id n'est pas connu, cela veut dire que c'est une insertion, on entre dans le IF et on définit
             if(!$categorie->getId())
                 $message = "La catégorie " . $categorie->getTitre() . " a été enregistrée avec succès !";
             else 
                 $message = "La catégorie " . $categorie->getTitre() . " a été modifiée avec succès !";
 
-            $manager->persist($categorie); // on prépare et on garder en mémoire la requete INSERT
+            $manager->persist($categorie);
             $manager->flush();
 
-            // // On définit un message de validation après l'execution de la requete SQL INSERT
-            // $this->addFlash('success', $message);
-
-            // Aprés l'execution de la requete INSERT, on redirige l'utilisateur vers l'affichage des catégories dans le BackOffice
             return $this->redirectToRoute('admin_categorie');
         }
 
@@ -213,5 +206,69 @@ class AdminController extends AbstractController
         ]);  
     }
 
+    /**
+     * @Route("/admin/boutique", name="admin_boutique")
+     */
+    public function adminBoutique(EntityManagerInterface $manager, Boutiques $boutiques = null, BoutiquesRepository $repoBoutique): Response
+
+    {
+        $colonnes=$manager->getClassMetadata(Boutiques::class)->getFieldNames();
+
+        $boutique=$repoBoutique->findAll();
+        return $this->render('admin/admin_boutique.html.twig',[
+            'colonnes'=>$colonnes,
+            'boutique'=>$boutique
+        ]);
+    }
+    /**
+     * @Route("/admin/boutique/ajout", name="admin_boutique_ajout")
+     */
+
+     public function boutiqueAjout(EntityManagerInterface $manager,Boutiques $boutique=null, Request $request): Response
+     {
+        if(!$boutique)
+        {
+            $boutique= new Boutiques;
+        }
+        $form=$this->createForm(BoutiqueFormType::class, $boutique);
+        $form->handleRequest($request);
+        dump($form);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            
+            // $message='La boutique'. $boutiques->getTitre() . 'a bien été inserer';
+            $manager->persist($boutique);
+            $manager->flush();
+            return $this->redirectToRoute('admin_boutique');
+
+        }
+    
+        return $this->render('admin/admin_ajout_boutique.html.twig',[
+            'form'=>$form->createView()
+        ]);
+     }
+
+     /**
+     * @Route("/admin/boutique/edit", name="admin_form_boutique")
+     * @Route("/admin/boutique/{id}/edit", name="admin_edit_boutique")
+     */
+
+
+    public function boutiqueEdit(Boutiques $boutique=null,Request $request,EntityManagerInterface $manager): Response
+    {
+        $formBoutique=$this->createForm(BoutiqueFormType::class, $boutique);
+        $formBoutique->handleRequest($request);
+
+        if($formBoutique->isSubmitted() && $formBoutique ->isValid())
+        {
+            $manager->persist($boutique); // on prépare le requete de modification 
+            $manager->flush();
+            return $this->redirectToRoute('admin_boutique');
+        }
+        return $this->render('admin/admin_edit_boutique.html.twig', [
+            'formBoutique' => $formBoutique->createView()
+        ]);
+    }
     
 }

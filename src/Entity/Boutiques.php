@@ -48,14 +48,14 @@ class Boutiques
 
      private $produits;
 
-     public function getProduits()
+     public function getProduits(): ?Produit
      {
-        return $this->produits;
+         return $this->produits;
      }
-
-     public function setProduits(string $produits): self
+ 
+     public function setCategory(?Produit $produit): self
      {
-         $this->produits = $produits;
+         $this->produit = $produit;
  
          return $this;
      }

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    BACK-OFFICE | AJOUTER DES BOUTIQUES
+
+{% endblock %}
+
+{% block body %}
+    <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | AJOUTER DES BOUTIQUES</h1>
+
+
+   {{ form_start(form) }}
+    {{ form_row(form.titre, {'attr': {'placeholder': 'Titre'}}) }}
+    {{ form_row(form.description, {'attr': {'placeholder': 'Description'}}) }}
+    {{ form_row(form.image, {'attr': {'placeholder': 'Inserer image'}}) }}
+    
+    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
+   {{form_end(form)}}
+{% endblock %}
