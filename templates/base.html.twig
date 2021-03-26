@@ -69,7 +69,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
 
                           <li class="nav-item">
-                            <a class="nav-link text-white hoverable" href="">BACK-OFFICE</a>
+                            <a class="nav-link text-white hoverable" href="{{ path('admin') }}">BACK-OFFICE</a>
                          </li>
 
                         {% endif %}
@@ -106,13 +106,13 @@
 
             <article class="midfooter row" >
             
-                 <a href=""><img src="{{ asset('image/twitter.png') }}" alt=""></a>
+                 <a href="" class="hoverables"><img src="{{ asset('image/twitter.png') }}" alt=""></a>
 
-                 <a href=""><img src="{{ asset('image/instagram.png') }}" alt=""></a>
+                 <a href="" class="hoverables"><img src="{{ asset('image/instagram.png') }}" alt=""></a>
 
-                 <a href=""><img src="{{ asset('image/facebook.png') }}" alt=""></a>
+                 <a href="" class="hoverables"><img src="{{ asset('image/facebook.png') }}" alt=""></a>
 
-                 <a href=""><img src="{{ asset('image/contact.png') }}" alt=""></a>
+                 <a href="" class="hoverables"><img src="{{ asset('image/contact.png') }}" alt=""></a>
                  
             
             </article>

@@ -98,17 +98,16 @@ class Boutiques
         return $this;
     }
 
-    public function getProduits(): ?Produit
-    {
-        return $this->produits;
-    }
-
-    public function setCategory(?Produit $produit): self
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
+    public function getProduits(): ?Produit 
+        {        
+             return $this->produit;    
+     }     
+      public function setProduits(?Produit $produit): self   
+        {       
+             $this->produit = $produit;      
+            
+            return $this;
+        }
 
     /**
      * @return Collection|Commentaires[]
