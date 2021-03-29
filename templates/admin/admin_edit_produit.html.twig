@@ -2,33 +2,35 @@
 
 {% block title %}
 
-     MODIFICATION DES PRODUITS
+     AJOUTER UN PRODUIT
 
 {% endblock %}
 
 {% block body %}
 
- <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">MODIFICATION DES PRODUITS N°: <span class=" badge alert-success mb-2"></span></h1>
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+ AJOUTER UN PRODUIT</span></h1>
 
-    
+{# 
+    {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
 
- {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
+      
+        {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
 
-    {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
+        {{form_row (formProduit.prix, {'label' : "Prix produit"})}}
 
-    {{form_row (formProduit.prix, {'label' : "Prix produit"})}}
+        {{form_row (formProduit.categories, {'label' : "Variante produit"})}}
 
-    {{form_row (formProduit.categories, {'label' : "Variante produit"})}}
+        {{form_row (formProduit.contenu, {'label' : "Description", 'attr' : {'rows' : 10} } ) }}
 
-    {{form_row (formProduit.contenu, {'label' : "Description", 'attr' : {'rows' : 10} } ) }}
+        {{form_row (formProduit.image)}}
 
-    {{form_row (formProduit.image)}}
 
-     <div class="row">
-        <button type="submit" class="btn btn-primary shadow-lg">AJOUTER </button>
-       
-    </div>
 
- {{form_end (formProduit)}}
+    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
 
-{% endblock %}
+ {{form_end (formProduit)}} #}
+
+
+
+ {% endblock %}
