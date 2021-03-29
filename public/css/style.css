@@ -20,17 +20,129 @@ footer
 
 .pd
 {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    width: 100% !important;
+    border: solid;
+    height: 50vh;
+   
+}
+
+.pouce
+{
+    background-image: url('/image/info.png');
+    background-repeat: no-repeat; 
+    background-size: contain;  
+}
+
+.pouce2
+{
+    background-image: url('/image/pouce.png'); 
+    background-repeat: no-repeat; 
+    background-size: contain; 
+}
+
+.pouce3
+{
+    background-image: url('/image/truck.png');
+    background-repeat: no-repeat; 
+    background-size: contain; 
+}
+
+.xtet
+{
+    border: solid;
+    max-height: auto;
+    min-height: auto;
+    min-width: auto;
+}
+.responimg
+{
+    border: solid;
+    max-height: 50vh;
+}
+
+.btik
+{
     width: 100%;
+}
+
+.testtext
+{
+  
+    padding-left: 2% !important;
+    width: 100% !important;
+    max-height: 50vh;
+
+   
+}
+
+.icone
+{
+    border: solid;
+    height: 33%;
+}
+
+.dis
+{
+  
+    height: 50vh;
 }
 
 .carou2
 {
-    max-width: 20vw;
-    display: flex !important;
+    position: relative;
 
 
+}
+
+.carou2:hover .image {
+    opacity: 0.3;
+  }
+  
+  .carou2:hover .middle {
+    opacity: 1;
+  }
+
+a.carousel-control-prev, a.carousel-control-next {
+    width: 7%;
+  }
+
+
+  span.carousel-control-next-icon {
+   background-color: black;
+  }
+
+
+.picture
+{
+   
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.text {
+    
+    color: black;
+    font-size: 30px;
+    padding: 16px 32px;
+    font-weight: bolder;
+
+  }
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+.picture:hover
+{
+    opacity: 50%;
 }
 
 .ca,.ci
@@ -38,6 +150,12 @@ footer
 
     width: 15vw;
     height: 35vh;
+}
+
+.titreP
+{
+
+    color: red;
 }
 
 .logos
@@ -52,6 +170,7 @@ footer
 {
     justify-content: center !important;
     width: 100%;
+    
  
 }
 
@@ -127,17 +246,14 @@ footer
   /*everything below here is just setting up the page, so dont worry about it */
   
   
-@media (min-width: 768px) {
-    .navbar{
-      text-align: center !important;
-      float: none;
 
+  
+.burger
+{
+    color: white;
 }
   
-  
-
-  
-nav 
+.navbar 
 {
     background-color: rgba(0,0,0,1);
     font-weight:600;
@@ -146,7 +262,7 @@ nav
     width: 100%;
     text-transform:uppercase;
     position: fixed !important;
-    z-index: 3;
+    z-index: 1;
 }
 
 nav a:link, a:visited {
