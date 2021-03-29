@@ -25,14 +25,16 @@
     </head>
     <body>
         <header class="">
-            <nav class="navbar navbar-expand-lg navbar-light col-md-12 mx-auto" id="proute">
+          <nav class="navbar navbar-expand-lg navbar-light ">
                 <img src="{{ asset('image/marijuana.png') }}" alt="" width="32px" height="32px" >
                 <a class="navbar-brand text-white" href="#">CBD GATE</a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class=""><img src="image/list.png" alt=""></span>
+  </button>
 
-                    <ul class="nav navbar-nav mr-auto">
-
-                    <li class="nav-item">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
                         <a class="nav-link text-white hoverable" href="{{ path('main') }}">ACCUEIL</a>
                     </li>
 
@@ -55,17 +57,18 @@
 
                     {% endif %}
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white hoverable" href="{{ path('main_boutiques') }}">BOUTIQUES</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white hoverable" href="{{ path('main_boutiques') }}">BOUTIQUES</a>
+                        </li>
                   
-                    <li class="nav-item">
-                        <a class="nav-link text-white hoverable" href="{{ path('main_contact') }}">CONTACT</a>
-                    </li>
+                       <li class="nav-item">
+                            <a class="nav-link text-white hoverable" href="{{ path('main_contact') }}">CONTACT</a>
+                      </li>
                     
-                </div>
-                    </li>
+               
 
+                     </li>
+                    
                         {% if is_granted('ROLE_ADMIN') %}
 
                           <li class="nav-item">
@@ -90,6 +93,8 @@
                     </form>
                 </div>
             </nav>
+
+ 
         </header>
         <main class="container-fluid conteneur-base">
 
