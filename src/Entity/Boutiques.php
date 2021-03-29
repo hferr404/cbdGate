@@ -121,7 +121,6 @@ class Boutiques
         return $this;
     }
 
-
     /**
      * @return Collection|Commentaires[]
      */

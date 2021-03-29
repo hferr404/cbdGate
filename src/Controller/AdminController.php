@@ -25,6 +25,7 @@ use App\Repository\CommentairesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,109 +83,156 @@ class AdminController extends AbstractController
 
 
     
-    /**
-     * @Route("/admin/edit", name="admin_edit_produit")
-     */
-    public function adminEditProduit(Produit $produit = null, Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
-    {
-        if (!$produit)
-         {
-            $produit = new Produit;
-        }
-
-        $produit->setTitre('CBD AUDI KUSH')
-                  ->setContenu('SE FUME');
-
-
-
-        $form = $this->createForm(FormProduitType::class, $produit);
-
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid())
-         {
-              /** @var UploadedFile */    
-            $imageFile = $form->get('image')->getData();
-
-            dump($imageFile);
-
-            if($imageFile)
-            {
-               
-                $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                dump($originalFileName);
-
-                $safeFileName = $slugger->slug($originalFileName);
-                dump($originalFileName);
-
-                $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
-
-                try
-                {
-                    $imageFile->move(
-                        $this->getParameter('image_directory')
-                    );
-                }
-                catch(FileException $e)
-                {
-
-                }
-
-                $produit->setImage($newFileName);
-            }
-
-            if(!$produit->getId())
-            {
-                $produit->setDateCreation(new \DateTime);
-            }                                
-           
- 
-                $manager->persist($produit);
-                $manager->flush();
-
-
-                return $this->redirectToRoute('admin_produit', [
-                    "id" => $produit->getId()
-                ]);
-            }
-
-      
-
-            return $this->render("admin/admin_edit_produit.html.twig", [
-            'formProduit' => $form->createView(),
-            // 'editMode' => $produit->getId()
-        ]);
-        }
-
-
-
-         /**
+       /**
         * 
         *@Route("/admin/produit/new", name="admin_add_produit")
         */
-        public function adminAddProduit(Request $request, EntityManagerInterface $manager): Response
+            public function adminAddProduit(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
+            {
+                
+                
+                $produit = new Produit;
+                
+
+                $produit->setTitre('CBD AUDI KUSH')
+                        ->setContenu('SE FUME');
+
+
+
+                $form = $this->createForm(FormProduitType::class, $produit);
+
+                $form->handleRequest($request);
+
+                dump($form['image']);
+
+
+                if ($form->isSubmitted() && $form->isValid())
+                {
+                    /** @var UploadedFile $imageFile */    
+                    $imageFile = $form->get('image')->getData();
+
+                    dump($imageFile);
+
+                    if($imageFile)
+                    {
+                    
+                        $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                        dump($originalFileName);
+
+                        $safeFileName = $slugger->slug($originalFileName);
+                        dump($originalFileName);
+
+                        $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                        try
+                        {
+                            $imageFile->move(
+                                $this->getParameter('image_directory'),
+                                $newFileName
+                            );
+                        }
+                        catch(FileException $e)
+                        {
+
+                        }
+
+                        $produit->setImage($newFileName);
+                    }
+
+                    if(!$produit->getId())
+                    {
+                        $produit->setDateCreation(new \DateTime);
+                    }                                
+                
+        
+                        $manager->persist($produit);
+                        $manager->flush();
+
+
+                        return $this->redirectToRoute('admin_produit', [
+                            "id" => $produit->getId()
+                        ]);
+                    }
+
+            
+
+                    return $this->render("admin/admin_add_produit.html.twig", [
+                    'formProduit' => $form->createView(),
+                    
+                ]);
+                }
+
+
+
+        
+
+    /**
+     * @Route("/admin/produit/edit", name="admin_edit_produit")
+     * @Route("/admin/produit/{id}/edit", name="admin_edit_produit")
+     */
+    public function adminEditProduit(Request $request, EntityManagerInterface $manager, Produit $produit = null, SluggerInterface $slugger): Response
+    {
+
+        if(!$produit)
         {
             $produit = new Produit;
-            $formProduit = $this->createForm(FormProduitType::class, $produit);
+        }
+      
+        $formProduit = $this->createForm(FormProduitType::class, $produit);
 
-            $formProduit->handleRequest($request);
+        $formProduit->handleRequest($request); 
+        
 
-            if($formProduit->isSubmitted() && $formProduit->isValid())
-            {
+
+        if ($formProduit) {
+            if ($formProduit->isSubmitted() && $formProduit->isValid())
+             {
+                
+                 /** @var UploadedFile $imageFile */    
+                 $imageFile = $formProduit->get('image')->getData();
+
+                 dump($imageFile);
+
+                 if($imageFile)
+                 {
+                 
+                     $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                     dump($originalFileName);
+
+                     $safeFileName = $slugger->slug($originalFileName);
+                     dump($originalFileName);
+
+                     $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                     try
+                     {
+                         $imageFile->move(
+                             $this->getParameter('image_directory'),
+                             $newFileName
+                         );
+                     }
+                     catch(FileException $e)
+                     {
+
+                     }
+
+                     $produit->setImage($newFileName);
+                 }
+
                 $manager->persist($produit);
                 $manager->flush();
 
-                $this->addFlash('success', "La catégorie  " . $produit->getTitre() . " a bien été ajoutée");
+                $this->addFlash('success', "Le produit " . $produit->getId() . " a bien été modifié");
+           
+                return $this->redirectToRoute('admin_produit');
+            }
+        } 
 
-                return $this->redirectToRoute("admin_produit");
-            } 
-
-            return $this->render('admin/admin_add_produit.html.twig', [
-                'nameProduit' => $produit->getTiTre(),
-                'formProduit' => $formProduit->createView()
-                ]);
-        }
+        return $this->render('admin/admin_edit_produit.html.twig', [
+            'formProduit' => $formProduit->createView()
+        ]);  
+    }
+  
 
     
 
@@ -240,7 +288,7 @@ class AdminController extends AbstractController
      * @Route("/admin/categorie/edit", name="admin_form_categorie")
      * @Route("/admin/categorie/{id}/edit", name="admin_form_categorie")
      */
-    public function adminFormCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie = null): Response
+    public function adminEditCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie = null): Response
     {
 
         if(!$categorie)
@@ -258,13 +306,10 @@ class AdminController extends AbstractController
         if($formCatego->isSubmitted() && $formCatego->isValid())
         {
 
-            if(!$categorie->getId())
-                $message = "La catégorie " . $categorie->getTitre() . " a été enregistrée avec succès !";
-            else 
-                $message = "La catégorie " . $categorie->getTitre() . " a été modifiée avec succès !";
-
                 $manager->persist($categorie); 
                 $manager->flush();
+
+                $this->addFlash('success', "La catégorie " . $categorie->getId() . " a bien été modifiée");
            
             return $this->redirectToRoute('admin_categorie');
         }
@@ -430,7 +475,7 @@ class AdminController extends AbstractController
         /**
          * @Route("/admin/comment/{id}/edit", name="admin_edit_commentaires")
          */
-        public function editComment(Commentaires $comment, Request $request, EntityManagerInterface $manager, Produit $produit= null): Response
+        public function editComment(Commentaires $comment, Request $request, EntityManagerInterface $manager): Response
         {
             $commentForm = $this->createForm(CommentFormType::class, $comment);
 

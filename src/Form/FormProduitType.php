@@ -34,6 +34,7 @@ class FormProduitType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Extensions acceptées: jpeg/jpg/png'
                     ])
+
                 ]
             ])
             ->add('categories', EntityType::class, [
@@ -46,7 +47,7 @@ class FormProduitType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            'data_class' => Produit::class
         ]);
     }
 }
