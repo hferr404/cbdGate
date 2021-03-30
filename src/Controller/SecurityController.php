@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Membre;
 use App\Form\InscriptionType;
+use App\Form\InscriptMembreType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class SecurityController extends AbstractController
      {
     $membre = new Membre(); 
   
-    $form = $this->createForm(InscriptionType::class, $membre); 
+    $form = $this->createForm(InscriptMembreType::class, $membre); 
 
     $form->handleRequest($request);
 

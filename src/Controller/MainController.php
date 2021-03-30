@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Produit;
+use App\Entity\Boutiques;
 use App\Form\AddCommType;
 use App\Entity\Commentaires;
+use App\Form\CommentFormType;
 use App\Repository\ProduitRepository;
 use App\Repository\BoutiquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,43 +51,57 @@ class MainController extends AbstractController
 
 
     /**
-     * @Route("/main/show", name="main_show")
+     * @Route("/main/shop", name="shop")
      */
 
-    public function show(Produit $produit, Request $request, EntityManagerInterface $manager): Response
+  
+    public function show(Boutiques $boutique, Request $request, EntityManagerInterface $manager): Response
     {
-     
-        
+       // $repoArticle = $this->getDoctrine()->getRepository(Article::class);
+       // dump($repoArticle);
+       // dump($id);
 
-        $comment = new Commentaires;
-        $formComment = $this->createForm(AddCommType::class, $comment);
+// On transmet à la méthode find() de la classe ArticleRepository l'id recupéré dans l'URL et transmit en argument de la fonction show($id) | $id = 3
+// La méthode find() permet de selectionner en BDD un article par son ID
+// on envoi sur le template les données selectionnées en BDD, c'est à dire les informations d'1 article en fonction l'id transmit dans l'URL
 
-        $formComment->handleRequest($request);
+       $comment = new Commentaires;
+       $formComment = $this->createForm(CommentFormType::class, $comment);
 
-        if ($formComment->isSubmitted() && $formComment->isValid()) {
-            $comment->setDateCreation(new \DateTime)
-                    ->setProduits($produit);
+       $formComment->handleRequest($request);
 
-            $manager->persist($comment);
-            $manager->flush();
+       if ($formComment->isSubmitted() && $formComment->isValid()) 
+       {
+               $comment->setDateCreation(new \DateTime)
+                       ->setBoutiques($boutique);
 
-         
+               $manager->persist($comment);
+               $manager->flush(); 
+
+               # app : varaible Twig qui contient toute les informations stockées en session #}
+               # flashes() : méthode permettant d'accéder aux message utilisateur stockés en session #}
+               # il peut y avoir plusieurs messages stockés donc nous sommes obligé de boucler #}
+               # message est une variable de reception qui contient 1 message utilisateur par tour de boucle #}
 
 
-            $this->addFlash('success', "Le commentaire a bien été posté");
+               $this->addFlash('success', "Le commentaire a bien été posté");
                
-            return $this->redirectToRoute('main_show', [
-                //    "id" => $produit->getId()
+               return $this->redirectToRoute('blog_show', [
+                   "titre" => $boutique->getTitre()
                ]);
-        }
+                                         
+       }   
 
 
 
-       
-        return $this->render('main/show.html.twig', [
-            "produit" => $produit,
+      //  $article = $repoArticle->find($id);
+        //dump($articleCr);
+        return $this->render('cbdGate/main/shop.html.twig', [
+            "boutique" => $boutique,
             'formComment' => $formComment->createView()
         ]);
+ 
+     
     }
 
     
