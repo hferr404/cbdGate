@@ -410,6 +410,9 @@ footer
     display: none;
     overflow: auto;
     max-height: 22vh;
+    box-shadow: 1px 1px 10px #555 ;
+
+    opacity: 90%;
 }
 
 .lol
@@ -528,4 +531,63 @@ footer
 figure
 {
     margin: 0 !important;
+}
+
+
+
+/****** scroll bar ****/ 
+
+.men_ex::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+  .men_ex::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.226);        /* color of the tracking area */
+  }
+  
+  .men_ex::-webkit-scrollbar-thumb {
+    background-color:rgb(41, 110, 1);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgba(66, 144, 3, 0.096);  /* creates padding around scroll thumb */
+  }
+
+
+  /************ body scroll ******/
+
+  body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(41, 110, 1);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgb(0, 0, 0);  /* creates padding around scroll thumb */
+  }
+
+
+
+  /********************************/
+
+  .newcolor
+  {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+  }
+
+  .newcolor:hover
+  {
+      background-color: rgb(41, 110, 1);
+      color: white;
+  }
+
+
+.caca 
+{
+    padding-top: 5vh;
+    width: 1900px;
+    
 }

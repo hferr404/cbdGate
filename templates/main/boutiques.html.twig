@@ -11,11 +11,11 @@
     
         <div class="list-group" id="list-tab" role="tablist">
 
-        <a class="list-group-item list-group-item-action list-group-item-success active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-        <a class="list-group-item list-group-item-action list-group-item-success" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-        <a class="list-group-item list-group-item-action list-group-item-success" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-        <a class="list-group-item list-group-item-action list-group-item-success" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-    
+        {% for data in boutiques %}
+
+        <a href="test-{{ data.id }}" class="list-group-item list-group-item-action newcolor" id="list-{{ data.id }}-list" data-toggle="list" href="#list-{{ data.id }}" role="tab" aria-controls="{{ data.id }}">{{ data.titre|upper}}</a>
+        
+        {% endfor %}
         </div>
 
     </div>
@@ -37,33 +37,15 @@
         <h1 class=" titre">LES BOUTIQUES</h1>
  </div>
 
-
+{% for data in boutiques %}
 <section id="party">
 
-    <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou1.png') }}" alt=""></figure></a>
+    <div class="border-top border-dark" id="test-{{ data.id }}">
+    <a href="{{ path('main_shop', {'id': data.id }) }}"><figure><img class="d-block w-100" src="{{ asset('/images/' ~ data.image) }}" alt="{{ data.titre}}"></figure></a>
     </div>
 
 </section>
-
-<section id="party">
-
-    <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou2.png') }}" alt=""></figure></a>
-    </div>
-
-</section>
-
-
-<section id="party">
-
-    <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou3.png') }}" alt=""></figure></a>
-    </div>
-
-</section>
-
-
+{% endfor %}
 </div>
 
 {% endblock %}
