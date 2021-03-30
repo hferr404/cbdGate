@@ -127,8 +127,6 @@ class MainController extends AbstractController
     /**
      * @Route("/shop", name="main_shop")
      */
-
-
     public function shop(): Response
     {
        
