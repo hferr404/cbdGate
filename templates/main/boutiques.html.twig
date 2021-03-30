@@ -7,18 +7,22 @@
 <div class="maybe">
 
 <div class="lol">
-    <div class="men_ex" id="men_ex">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+    <div class="men_ex text-center rounded-right " id="men_ex">
+    
+        <div class="list-group" id="list-tab" role="tablist">
+
+        <a class="list-group-item list-group-item-action list-group-item-success active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+        <a class="list-group-item list-group-item-action list-group-item-success" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+        <a class="list-group-item list-group-item-action list-group-item-success" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+        <a class="list-group-item list-group-item-action list-group-item-success" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+    
+        </div>
+
     </div>
 
+
     <div class="show_hide" id="show_hide">
-        <img src="{{ asset('image/arrow.png') }}" alt="">
+        <img src="{{ asset('image/arrow.png') }}" id="jojo" alt="">
     </div>
 
 </div>
@@ -34,27 +38,27 @@
  </div>
 
 
-<section>
+<section id="party">
 
     <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou1.png') }}" alt=""></a>
+    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou1.png') }}" alt=""></figure></a>
     </div>
 
 </section>
 
-<section>
+<section id="party">
 
     <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou2.png') }}" alt=""></a>
+    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou2.png') }}" alt=""></figure></a>
     </div>
 
 </section>
 
 
-<section>
+<section id="party">
 
     <div class="border-top border-dark">
-    <a href="{{ path('main_shop') }}"><img class="d-block w-100" src="{{ asset('image/carou3.png') }}" alt=""></a>
+    <a href="{{ path('main_shop') }}"><figure><img class="d-block w-100" src="{{ asset('image/carou3.png') }}" alt=""></figure></a>
     </div>
 
 </section>
