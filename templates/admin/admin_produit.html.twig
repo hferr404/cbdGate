@@ -22,10 +22,15 @@ BACK-OFFICE | GESTION DES PRODUITS
         <tr>
         {% for item in colonnes %}
 
+
             {% if item == "dateCreation"%}
 
             <th class="bg-dark">DATE</th>
-        
+
+
+            {% elseif item == "id"%}
+
+            <th class="bg-dark">REF</th>
                
 
                     {% else %}
@@ -59,7 +64,7 @@ BACK-OFFICE | GESTION DES PRODUITS
                           <td class="alert badge-warning my-5">{{item2.id}}</td>
                           <td class="alert alert-info">{{item2.titre}}</td>
                           <td class="alert alert-info">{{item2.contenu|striptags|slice(0, 300)}}...</td>
-                          <td class="alert alert-info"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" class="img-admin-articles"></td>
+                          <td class="alert alert-info"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" class="img-admin-articles" style="width:300px;"></td>
                           <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
                           <td class="alert alert-info">{{item2.prix}}€</td>
                           <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>

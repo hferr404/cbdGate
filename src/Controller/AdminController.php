@@ -373,56 +373,148 @@ class AdminController extends AbstractController
         ]);
     }
   
-  
     /**
-     * @Route("/admin/boutique/ajout", name="admin_boutique_ajout")
-     */
-     public function boutiqueAjout(EntityManagerInterface $manager,Boutiques $boutique=null, Request $request): Response
-     {
-        if(!$boutique)
-        {
-            $boutique= new Boutiques;
-        }
-        $form=$this->createForm(BoutiqueFormType::class, $boutique);
-        $form->handleRequest($request);
-        dump($form);
-
-        if($form->isSubmitted() && $form->isValid())
+    * 
+    *@Route("/admin/boutique/new", name="admin_ajout_boutique")
+    */
+        public function adminAddBoutique(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
         {
             
-            // $message='La boutique'. $boutiques->getTitre() . 'a bien été inserer';
-            $manager->persist($boutique);
-            $manager->flush();
-            return $this->redirectToRoute('admin_boutique');
+            
+            $boutique = new Boutiques;
+            
 
-        }
+         
+
+
+
+            $form = $this->createForm(BoutiqueFormType::class, $boutique);
+
+            $form->handleRequest($request);
+
+            dump($form['image']);
+
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+                /** @var UploadedFile $imageFile */    
+                $imageFile = $form->get('image')->getData();
+
+                dump($imageFile);
+
+                if($imageFile)
+                {
+                
+                    $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    dump($originalFileName);
+
+                    $safeFileName = $slugger->slug($originalFileName);
+                    dump($originalFileName);
+
+                    $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                    try
+                    {
+                        $imageFile->move(
+                            $this->getParameter('image_directory'),
+                            $newFileName
+                        );
+                    }
+                    catch(FileException $e)
+                    {
+
+                    }
+
+                    $boutique->setImage($newFileName);
+                }
+
+              
+            
     
-        return $this->render('admin/admin_ajout_boutique.html.twig',[
-            'form'=>$form->createView()
-        ]);
-     }
-  
+                    $manager->persist($boutique);
+                    $manager->flush();
+
+
+                    return $this->redirectToRoute('admin_boutique');
+                }
+
+        
+
+                return $this->render("admin/admin_ajout_boutique.html.twig", [
+                'form' => $form->createView(),
+                
+            ]);
+            }
+
+
 
      /**
      * @Route("/admin/boutique/edit", name="admin_form_boutique")
      * @Route("/admin/boutique/{id}/edit", name="admin_edit_boutique")
      */
-    public function boutiqueEdit(Boutiques $boutique=null,Request $request,EntityManagerInterface $manager): Response
+    public function adminEditBoutique(Request $request, EntityManagerInterface $manager, Boutiques $boutique = null, SluggerInterface $slugger): Response
     {
-        $formBoutique=$this->createForm(BoutiqueFormType::class, $boutique);
-        $formBoutique->handleRequest($request);
 
-        if($formBoutique->isSubmitted() && $formBoutique ->isValid())
+        if(!$boutique)
         {
-            $manager->persist($boutique); // on prépare le requete de modification 
-            $manager->flush();
-            return $this->redirectToRoute('admin_boutique');
+            $boutique = new Boutiques;
         }
-        return $this->render('admin/admin_edit_boutique.html.twig', [
-            'formBoutique' => $formBoutique->createView()
-        ]);
-    }
+      
+        $form = $this->createForm(BoutiqueFormType::class, $boutique);
 
+        $form->handleRequest($request); 
+        
+
+
+        if ($form) {
+            if ($form->isSubmitted() && $form->isValid())
+             {
+                
+                 /** @var UploadedFile $imageFile */    
+                 $imageFile = $form->get('image')->getData();
+
+                 dump($imageFile);
+
+                 if($imageFile)
+                 {
+                 
+                     $originalFileName = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                     dump($originalFileName);
+
+                     $safeFileName = $slugger->slug($originalFileName);
+                     dump($originalFileName);
+
+                     $newFileName = $safeFileName . '-' . uniqid() . '.' . $imageFile->guessExtension();
+
+                     try
+                     {
+                         $imageFile->move(
+                             $this->getParameter('image_directory'),
+                             $newFileName
+                         );
+                     }
+                     catch(FileException $e)
+                     {
+
+                     }
+
+                     $boutique->setImage($newFileName);
+                 }
+
+                $manager->persist($boutique);
+                $manager->flush();
+
+                $this->addFlash('success', "Le produit " . $boutique->getTitre() . " a bien été modifié");
+           
+                return $this->redirectToRoute('admin_boutique');
+            }
+        } 
+
+        return $this->render('admin/admin_edit_boutique.html.twig', [
+            'form' => $form->createView()
+        ]);  
+    }
+  
     
        
 
@@ -510,7 +602,7 @@ class AdminController extends AbstractController
          *
          * 
          */
-        public function adminUsers(EntityManagerInterface $manager, MembreRepository $membreRepo, Membre $membre = null): Response
+        public function adminMembre(EntityManagerInterface $manager, MembreRepository $membreRepo, Membre $membre = null): Response
         {
             $colonnes = $manager->getClassMetadata(Membre::class)->getFieldNames();
             $membreBdd = $membreRepo->findAll();
