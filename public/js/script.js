@@ -2,8 +2,23 @@
 $(document).ready(function()
 {
     $("#show_hide").click(function(){
-      $("#men_ex").animate({width:"toggle"});
+    $("#men_ex").animate({width:"toggle"});
     });
+
+
+    $("#show_hideback").click(function(){
+      $("#men_exback").animate({height:"toggle"});
+    });
+
+    $('#jojoback').on({
+      'click': function() {
+           var src = ($(this).attr('src') === 'image/arrowbot.png')
+              ? 'image/arrowtop.png'
+              : 'image/arrowbot.png';
+           $(this).attr('src', src);
+      }
+    });
+
 
     $('#jojo').on({
       'click': function() {
@@ -14,24 +29,15 @@ $(document).ready(function()
       }
     });
 
-        // $(document).load('body');
-        // $('#image-neon').animate(
-        //     {
-        //         'opacity' : '1'
-        //     },100);    
+    
 
-        // $(document).load('body');
-        // $('#image-neon').animate(
-        // {
-        //   'opacity' : '1'
-        // },100);
-
-
-        // $("button").load(() => {
-        //   var div = $("#image-neon"); 
-        //   div.animate({left: '100px'}, "slow");
-        //   div.animate({fontSize: '4em'}, "slow");
-        // });
+    // $( "#image-neon" ).mouseenter(function() {
+    //   $("#image-neon").flip({
+    //     axis: 'x',
+    //     trigger: 'hover',
+    //     reverse: true
+    //   });
+    // });
   
 });
 
@@ -57,4 +63,7 @@ var chaine = 'B O U T I Q U E S ' ;
     }
     if(document.getElementById)
     
-    setInterval("changeMessage()",50);
+
+    setInterval("changeMessage()",100);
+
+

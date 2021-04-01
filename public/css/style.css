@@ -122,7 +122,9 @@ footer
     margin-bottom: 3vh;
 }
 
-.midfooter a 
+
+
+.responimg
 {
     padding-right: 1vw ;
     padding-left: 1vw ;
@@ -359,8 +361,40 @@ a.carousel-control-prev, a.carousel-control-next {
 
 
 
-/*******************************************Boutique***********************************************************/
 
+    backface-visibility: hidden;
+    vertical-align: middle;
+    position:relative;
+    tranform: translateZ(0);
+    transition-duration: .3s;
+    transition-property:transform;
+}
+
+.hoverables:before{
+    position:absolute;
+    pointer-events: none;
+    z-index:-1;
+    content: '';
+    top: 100%;
+    left: 5%;
+    height:10px;
+    width:90%;
+    opacity:0;
+    background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
+    /* W3C */
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+}
+
+  
+.hoverables:hover, .hoverables:active, .hoverables:focus{
+    transform: translateY(-8px);
+}
+.hoverables:hover:before, .hoverables:active:before, .hoverables:focus:before{
+    opacity: 1;
+    transform: translateY(-1px);
+}
 
 
 
@@ -369,7 +403,8 @@ a.carousel-control-prev, a.carousel-control-next {
     text-align: center;
     color: rgb(255, 255, 255);
     justify-content: center;
-    margin-bottom: 2vh;
+    margin-bottom: -5vh;
+    font-size: 350%;
     
 }
 
@@ -568,6 +603,65 @@ h1
 {
     font-family: 'Montserrat', sans-serif;
 }
+
+
+
+.back 
+{
+    padding-top: 10%;
+    background-image: url("../image/background.jpg");
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+
+.lolback
+{
+    position: fixed;
+    z-index: 3;
+    min-width: 40%;
+    width: 15vw;
+    margin-left: 30%;
+
+}
+
+.men_exback
+{
+    width: 100%;
+    margin-top: 1vh;
+    overflow: auto;
+    max-height: 22vh;
+    box-shadow: 1px 1px 10px #555 ;
+    opacity: 90%;
+}
+
+.show_hideback
+{
+    display: flex;
+    justify-content: center;
+    z-index: 5 !important;
+}
+
+
+
+
+.men_exback::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+  .men_exback::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.226);        /* color of the tracking area */
+  }
+  
+  .men_exback::-webkit-scrollbar-thumb {
+    background-color:rgb(41, 110, 1);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgba(66, 144, 3, 0.096);  /* creates padding around scroll thumb */
+  }
+/************************/
+
 
 
 

@@ -5,41 +5,54 @@
 {% block body %}
 
 
-    <h1 class="display-4 text-center bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE</h1>
 
-    <h4 class="text-center col-md-7 bg-dark text-white mx-auto py-2 rounded shadow-lg">Bienvenue
+<div class="back">
+
+
+    <h1 class="display-4 text-center text-white mx-auto rounded shadow-lg mb-5 mt-5">BACK-OFFICE</h1>
+
+    <h4 class="text-center col-md-7 text-white mx-auto py-2 rounded shadow-lg">Bienvenue
 
         {% if app.user %}
 
-            <span class="text-info"> {{ app.user.username }} ✅</span>
+            <span class="text-success"> {{ app.user.username }}.</span>
 
         {% endif %} 
 
-        dans votre espace personnalisé   
+           Cliquez sur la flèche pour accéder au BACK-OFFICE.
     
     </h4>
 
-    <div class="text-center mt-5 d-flex flex-column" style="margin-top: 400px !important;"> 
+
+    <div class="lolback">
+
+        <div class="show_hideback" id="show_hideback">
+            <img class="skyou" src="{{ asset('image/arrowtop.png') }}" id="jojoback" alt="">
+        </div>
+
+        <div class="men_exback text-center rounded-right " id="men_exback">
+        
+            <div class="list-group" id="list-tab" role="tablist">
+
+                <a href="{{path('admin_boutique')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES BOUTIQUES</a>
+
+                <a href="{{path('admin_produit')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES PRODUITS</a>
+                
+                <a href="{{path('admin_categorie')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES CATEGORIES</a>
+
+                <a href="{{path('admin_commentaires')}}" class="list-group-item list-group-item-action newcolor">GESTION DES COMMENTAIRES</a>
+
+                <a href="{{path('admin_membre')}}" class="list-group-item list-group-item-action newcolor">GESTION DES MEMBRES</a>
+
+            </div>
+
+        </div>
 
 
-</div>    
+        
 
-    
-      
+    </div>
 </div>
 
-<div class="text-center mt-5 d-flex flex-column" style="position:relative !important;"> 
-
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_boutique')}}">GESTION DES BOUTIQUES</a>
-
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_produit')}}">GESTION DES PRODUITS</a>
-
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_categorie')}}">GESTION DES CATEGORIES</a>
-
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_commentaires')}}">GESTION DES COMMENTAIRES</a>
-        
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_membre')}}">GESTION DES MEMBRES</a>
-        
-</div>    
 
 {% endblock %}
