@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ * 
  */
 class Produit
 {

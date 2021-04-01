@@ -28,6 +28,7 @@ footer
    
 }
 
+
 .responimg
 {
     border: solid;
@@ -311,7 +312,6 @@ footer
     backface-visibility: hidden;
     vertical-align: middle;
     position:relative;
-    box-shadow: 0 0 1px rgb(0, 0, 0);
     tranform: translateZ(0);
     transition-duration: .3s;
     transition-property:transform;
@@ -352,7 +352,8 @@ footer
     text-align: center;
     color: rgb(255, 255, 255);
     justify-content: center;
-    margin-bottom: 2vh;
+    margin-bottom: -5vh;
+    font-size: 350%;
     
 }
 
@@ -600,3 +601,67 @@ h1
 {
     font-family: 'Montserrat', sans-serif;
 }
+
+
+/**********BACKOFFICE*************/
+
+.back 
+{
+    padding-top: 10%;
+    background-image: url("../image/background.jpg");
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+}
+
+
+.lolback
+{
+    position: fixed;
+    z-index: 3;
+    min-width: 40%;
+    width: 15vw;
+    margin-left: 30%;
+
+}
+
+.men_exback
+{
+    width: 100%;
+    margin-top: 1vh;
+    overflow: auto;
+    max-height: 22vh;
+    box-shadow: 1px 1px 10px #555 ;
+    opacity: 90%;
+}
+
+.show_hideback
+{
+    display: flex;
+    justify-content: center;
+    z-index: 5 !important;
+}
+
+
+
+
+.men_exback::-webkit-scrollbar {
+    width: 5px;               /* width of the entire scrollbar */
+  }
+  
+  .men_exback::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.226);        /* color of the tracking area */
+  }
+  
+  .men_exback::-webkit-scrollbar-thumb {
+    background-color:rgb(41, 110, 1);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid rgba(66, 144, 3, 0.096);  /* creates padding around scroll thumb */
+  }
+/************************/
+
+
+
+
+
