@@ -17,9 +17,6 @@ class BoutiqueFormType extends AbstractType
         $builder
 
             ->add('titre')
-            ->add('adresse')
-            ->add('code_postal')
-            ->add('website')
             ->add('description')
             ->add('image',FileType::class,[
                 "label" => "Photo de la boutique",
@@ -38,6 +35,10 @@ class BoutiqueFormType extends AbstractType
 
                 ]
             ])
+            ->add('adresse')
+            ->add('code_postal')
+            ->add('website')
+            
         ;
     }
 

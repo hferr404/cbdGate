@@ -8,6 +8,7 @@ namespace App\Controller;
 
 use App\Entity\Membre;
 use App\Entity\Produit;
+use App\Entity\Comments;
 use App\Entity\Boutiques;
 use App\Entity\Categorie;
 use App\Entity\Commentaires;
@@ -18,6 +19,7 @@ use App\Form\CategorieFormType;
 use App\Form\InscriptMembreType;
 use App\Repository\MembreRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\CommentsRepository;
 use App\Repository\BoutiquesRepository;
 use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -386,8 +388,6 @@ class AdminController extends AbstractController
 
          
 
-
-
             $form = $this->createForm(BoutiqueFormType::class, $boutique);
 
             $form->handleRequest($request);
@@ -523,9 +523,9 @@ class AdminController extends AbstractController
          * @Route("/admin/commentaires", name="admin_commentaires")
          * @Route("/admin/comment/{id}/remove", name="admin_remove_comment")
          */
-        public function adminComment(Commentaires $comment = null, EntityManagerInterface $manager, CommentairesRepository $commentRepo): Response
+        public function adminComment(Comments $comment = null, EntityManagerInterface $manager, CommentsRepository $commentRepo): Response
         {
-            $colonnes = $manager->getClassMetadata(Commentaires::class)->getFieldNames();
+            $colonnes = $manager->getClassMetadata(Comments::class)->getFieldNames();
             $commentBdd = $commentRepo->findAll();
 
 
