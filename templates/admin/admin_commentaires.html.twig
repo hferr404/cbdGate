@@ -11,6 +11,10 @@
  <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
  BACK-OFFICE | CATEGORIE DES COMMENTAIRES</span></h1>
 
+        <div class="container col-md-4 mx-auto row justify-content-around">
+          <small class="container col-md-6 mx-auto hoverable" ><a href="{{path('admin')}}" class="btn btn-primary text-center my-5" id="commentaire">RETOUR SUR LE BACK-OFFICE</a>  </small>
+        </div>
+
     <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
          {% for label, messages in app.flashes(['danger', 'success']) %}
 

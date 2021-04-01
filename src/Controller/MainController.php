@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Contact;
 use App\Entity\Produit;
 use App\Entity\Boutiques;
 use App\Form\AddCommType;
 use App\Entity\Commentaires;
 use App\Form\CommentFormType;
+use App\Form\ContactType;
+use App\Notification\ContactNotification;
 use App\Repository\ProduitRepository;
 use App\Repository\BoutiquesRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -142,11 +145,22 @@ class MainController extends AbstractController
      */
 
 
-    public function contact(): Response
+    public function contact(Request $request, EntityManagerInterface $manager, ContactNotification $notification): Response
     {
-       
+       $contact=new Contact();
+       $form=$this->createForm(ContactType::class,$contact);
+       $form->handleRequest($request);
+       if($form->isSubmitted() && $form->isValid())
+       {
+           $notification->notify($contact);
+           $this->addFlash('success', 'Votre Email a bien été envoyé');
+           $manager->persist($contact);
+           $manager->flush();
+       }
 
-       return $this->render('main/contact.html.twig');
+       return $this->render('main/contact.html.twig',[
+           'formContact'=>$form->createView()
+       ]);
     }
     
 }

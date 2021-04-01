@@ -19,7 +19,10 @@
       {% endfor %}
 
     {% endfor %}
-
+        <div class="container col-md-4 mx-auto row justify-content-around">
+          <small class="container col-md-6 mx-auto"><a href="{{path('admin_new_categorie')}}" class="btn btn-primary text-center my-5" id="categorie"> AJOUTER UNE CATEGORIE </a>  </small>
+          <small class="container col-md-6 mx-auto hoverable"><a href="{{path('admin')}}" class="btn btn-primary text-center my-5" id="categorie">RETOUR SUR LE BACK-OFFICE</a>  </small>
+        </div>
       <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
         <tr>
         {% for item in colonnes %}
@@ -41,11 +44,11 @@
            <tr>
             {% for item2 in categorie %}
 
-            <td class="alert alert-secondary my-5"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
-            <td class="alert alert-warning my-5 text-danger"> {{item2.titre}}<hr> </td>
-            <td class="alert alert-secondary my-5"> {{item2.description}} <hr> <i class="alert alert-success py-lg-1 shadow-sm"> <strong>nombre de produit(s) lié(s) à cette variante: {{item2.produits|length}}</strong</i> </td>
-            <td class="alert alert-secondary my-5"><a href="{{path('admin_form_categorie', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
-            <td class="alert alert-secondary my-5"><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))"
+            <td class="alert alert-secondary my-5 align-middle"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
+            <td class="alert alert-warning my-5 text-danger align-middle"> {{item2.titre}}<hr> </td>
+            <td class="alert alert-secondary my-5 align-middle"> {{item2.description}} <hr> <i class="alert alert-success py-lg-1 shadow-sm"> <strong>nombre de produit(s) lié(s) à cette variante: {{item2.produits|length}}</strong</i> </td>
+            <td class="alert alert-secondary my-5 align-middle"><a href="{{path('admin_form_categorie', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+            <td class="alert alert-secondary my-5 align-middle"><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))"
              href="{{path('admin_remove_categorie', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
 
              </tr>
@@ -56,9 +59,8 @@
         </tr>
          
       </table>
-      <div class="container col-md-2 mx-auto">
-      <small class="container col-md-2 mx-auto"><a href="{{path('admin_new_categorie')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE CATEGORIE </a>  </small>
-      </div>
+      
+      
 
        
 

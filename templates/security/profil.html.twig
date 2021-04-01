@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container-fluid">
+     <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BIENVENUE SUR VOTRE PROFIL</h1>
+
+    <table class="table table-bordered text-center text-white bg-secondary col-md-4 mx-auto shadow-lg">
+            <tr>
+                <th class="bg-dark">Profil</th>        
+            </tr>
+            <tr>
+                <td class="align-middle"><strong>EMAIL :</strong> {{app.user.email}}</td>
+                
+                
+            </tr>
+            <tr>
+                <td class="align-middle"><strong>NOM D'UTILISATEUR :</strong> {{app.user.username}}</td>
+            </tr>
+            <tr>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td class="align-middle"><strong>ROLE :</strong> Admin</td>
+                {% else %}
+                    <td class="align-middle"><strong>ROLE :</strong> User</td>
+                {% endif %} 
+            </tr>
+            {% if app.user.avatar %}
+                <tr>
+                    <td><img src="{{asset('images/' ~ app.user.avatar)}}" alt=""></td>
+                <tr>
+            {% endif %}
+            
+    </table>
+
+</div>
+
+
+{% endblock %}

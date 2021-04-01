@@ -5,7 +5,9 @@ namespace App\Form;
 use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -23,7 +25,22 @@ class InscriptionType extends AbstractType
             'required' => false])
         ->add('confirm_password', PasswordType::class, [
             'required' => false])
-           
+        ->add('avatar',FileType::class,[
+            "label" => "Votre photo de profil",
+            "mapped" => false,
+            "required" => false,
+            "constraints" => [
+                new File([
+                    'maxSize' => '2M',
+                    'mimeTypes' => [
+                        'image/jpg',
+                        'image/png',
+                        'image/jpeg'
+                    ],
+                    'mimeTypesMessage' => 'Extensions acceptées: jpeg/jpg/png'
+                ])
+            ]
+        ])
         ;
     }
 

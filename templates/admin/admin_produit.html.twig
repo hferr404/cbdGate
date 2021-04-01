@@ -10,14 +10,17 @@ BACK-OFFICE | GESTION DES PRODUITS
 
 <div class="container-fluid" style="background">
 
-     <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">GESTION DES PRODUITS</h1>
+     <h1 class="display-4 text-center bg-dark text-white mx-auto rounded shadow-lg">GESTION DES PRODUITS</h1>
      
         {% for message in app.flashes ('success') %}
 
             <div class="col-md-3 alert alert-success p-2 rounded mx-auto text-center mb-3 shadow-lg"> {{ message }} </div>
 
         {% endfor %}
-      
+        <div class="container col-md-4 mx-auto row justify-content-around">
+          <small class="container col-md-6 mx-auto hoverable"><a href="{{path('admin_add_produit')}}" class="btn btn-primary text-center my-5" id="produit"> AJOUTER UN PRODUIT </a>  </small>
+          <small class="container col-md-6 mx-auto hoverable"><a href="{{path('admin')}}" class="btn btn-primary text-center my-5" id="produit">RETOUR SUR LE BACK-OFFICE</a>  </small>
+        </div>
         <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto">
         <tr>
         {% for item in colonnes %}
@@ -61,15 +64,15 @@ BACK-OFFICE | GESTION DES PRODUITS
         
                       {% for item2 in produit %}
                         <tr>
-                          <td class="alert badge-warning my-5">{{item2.id}}</td>
-                          <td class="alert alert-info">{{item2.titre}}</td>
-                          <td class="alert alert-info">{{item2.contenu|striptags|slice(0, 300)}}...</td>
-                          <td class="alert alert-info"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" class="img-admin-articles" style="width:300px;"></td>
-                          <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
-                          <td class="alert alert-info">{{item2.prix}}€</td>
-                          <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>
-                          <td><a href="{{path('admin_edit_produit', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
-                          <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="{{path('admin_remove_produit', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
+                          <td class="alert badge-warning my-5 align-middle">{{item2.id}}</td>
+                          <td class="alert alert-info align-middle">{{item2.titre}}</td>
+                          <td class="alert alert-info align-middle">{{item2.contenu|striptags|slice(0, 300)}}...</td>
+                          <td class="alert alert-info align-middle"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" class="img-admin-articles" style="width:200px;"></td>
+                          <td class="alert alert-warning align-middle">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
+                          <td class="alert alert-info align-middle">{{item2.prix}}€</td>
+                          <td class="alert alert-info align-middle">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>
+                          <td class="align-middle"><a href="{{path('admin_edit_produit', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
+                          <td class="align-middle"><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="{{path('admin_remove_produit', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
                         </tr>  
                     
                     {% endfor %} 
@@ -80,6 +83,5 @@ BACK-OFFICE | GESTION DES PRODUITS
         
     </table>
 
-      <div class="container col-md-5 d-flex justify-center">
-     <a class="btn btn-primary col-md-5 mx-auto" href="{{path('admin_add_produit')}}">AJOUTER</a>
+      
 {% endblock %}

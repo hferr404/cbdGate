@@ -13,6 +13,58 @@ $(document).ready(function(){
       }
     });
 
+     $('#boutique').on('mouseenter', function(){
+      
+       $(this).css({'background-color':'black',
+                    'transition':'all ease 1.5s'});
+     });
+     $('#boutique').on('mouseleave', function(){
+      
+       $(this).css({'background-color': 'grey',
+                    'transition':'all ease 1.5s'});
+     });
+
+     $('#produit').on('mouseenter', function(){
+      
+      $(this).css({'background-color':'black',
+      'transition':'all ease 1.5s'});
+     });
+     $('#produit').on('mouseleave', function(){
+      
+      $(this).css({'background-color': 'grey',
+      'transition':'all ease 1.5s'});;
+     });
+
+     $('#categorie').on('mouseenter', function(){
+      
+      $(this).css({'background-color':'black',
+      'transition':'all ease 1.5s'});
+     });
+     $('#categorie').on('mouseleave', function(){
+      
+      $(this).css({'background-color': 'grey',
+      'transition':'all ease 1.5s'});
+     });
+     $('#commentaire').on('mouseenter', function(){
+      
+      $(this).css({'background-color':'black',
+      'transition':'all ease 1.5s'});
+     });
+     $('#commentaire').on('mouseleave', function(){
+  
+      $(this).css({'background-color': 'grey',
+                    'transition':'all ease 1.5s'});
+     });
+     $('#membre').on('mouseenter', function(){
+      
+      $(this).css({'background-color':'black',
+      'transition':'all ease 1.5s'});
+     });
+     $('#membre').on('mouseleave', function(){
+      
+      $(this).css({'background-color': 'grey',
+      'transition':'all ease 1.5s'});
+     });
  
 });
 

@@ -5,7 +5,15 @@
 {% endblock %}
 {% block body %}
      <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | GESTION DES BOUTIQUES</h1>
+    {% for message in app.flashes ('success') %}
 
+            <div class="col-md-3 alert alert-success p-2 rounded mx-auto text-center mb-3 shadow-lg"> {{ message }} </div>
+
+    {% endfor %}
+    <div class="container col-md-4 mx-auto row justify-content-around">
+      <small class="container col-md-6 mx-auto hoverable"><a href="{{path('admin_ajout_boutique')}}" class="btn text-center my-5" id="boutique"> AJOUTER UNE BOUTIQUE </a>  </small>
+      <small class="container col-md-6 mx-auto hoverable"><a href="{{path('admin')}}" class="btn text-center my-5" id="boutique">RETOUR SUR LE BACK-OFFICE</a>  </small>
+    </div>
      <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
         <tr>
             {% for item in colonnes %}
@@ -19,20 +27,18 @@
         </tr>
         {% for item2 in boutique %}
             <tr>
-                <td>{{item2.titre}}</td>
-                <td>{{item2.description}}</td>
-                <td><img src="{{asset('images/' ~ item2.image)}}" alt="{{item2.titre}}" style="max-width: 400px"></td>
-                <td><a href="{{path('admin_edit_boutique', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
-                <td><a href="{{path('admin_remove_boutique', {'id':  item2.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cette boutique ?'))"><i class="fas fa-trash-alt"></i></a></td>
+                <td class="align-middle">{{item2.titre}}</td>
+                <td class="align-middle">{{item2.description}}</td>
+                <td class="align-middle"><img src="{{asset('images/' ~ item2.image)}}" alt="{{item2.titre}}" style="max-width: 200px"></td>
+                <td class="align-middle"><a href="{{path('admin_edit_boutique', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+                <td class="align-middle"><a href="{{path('admin_remove_boutique', {'id':  item2.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cette boutique ?'))"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
                 
         {% endfor %}
         
     </table>
 
-    <div class="container col-md-2 mx-auto">
-      <small class="container col-md-2 mx-auto"><a href="{{path('admin_ajout_boutique')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE BOUTIQUE </a>  </small>
-    </div>
+    
     
 
 {% endblock %}

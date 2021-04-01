@@ -19,7 +19,11 @@
         {{form_row (formCatego.description, {'label' : "Déscription de la catégorie", 'attr' : {'rows' : 6}})}}
 
 
-    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
+    
+    <div class="container col-md-12 mx-auto row justify-content-around">
+      <small class="container col-md-6 mx-auto hoverable" ><button type="submit" class="btn btn-primary text-center my-5" id="categorie">AJOUTER UNE CATEGORIE</button></small>
+      <small class="container col-md-6 mx-auto hoverable" ><a href="{{path('admin_categorie')}}" class="btn btn-primary text-center my-5" id="categorie">RETOUR SUR LES CATEGORIES</a>  </small>
+    </div>
 
  {{form_end (formCatego)}}
 

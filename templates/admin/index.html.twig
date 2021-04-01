@@ -8,8 +8,8 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="container-fluid" style="background-image: url('https://cdn-s-www.estrepublicain.fr/images/9E50CF5A-2C68-461F-B0D5-BF0DDA4F24C9/MF_contenu/cbd-vers-une-reglementation-plus-adaptee-1612963872.jpg');">
-    <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE</h1>
+<div class="container-fluid" style="background-image: url('{{asset('images/admin_index.png')}}'); background-repeat: no-repeat; height:300px; background-size: 100%;">
+    <h1 class="display-4 col-md-7 text-center bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE</h1>
 
     <h4 class="text-center col-md-7 bg-dark text-white mx-auto py-2 rounded shadow-lg">Bienvenue
 
@@ -32,17 +32,17 @@
       
 </div>
 
-<div class="text-center mt-5 d-flex flex-column" style="position:relative !important;"> 
+<div class="text-center mt-5 d-flex flex-column align-items-center" style="position:relative !important;"> 
 
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_boutique')}}">GESTION DES BOUTIQUES</a>
+        <a class="btn col-md-4 mb-2 shadow-lg hoverable" id="boutique" href="{{path('admin_boutique')}}">GESTION DES BOUTIQUES</a>
 
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_produit')}}">GESTION DES PRODUITS</a>
+        <a class="btn col-md-4 mb-2 shadow-lg hoverable" id="produit" href="{{path('admin_produit')}}">GESTION DES PRODUITS</a>
 
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_categorie')}}">GESTION DES CATEGORIES</a>
+        <a class="btn col-md-4 mb-2 shadow-lg hoverable" id="categorie" href="{{path('admin_categorie')}}">GESTION DES CATEGORIES</a>
 
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_commentaires')}}">GESTION DES COMMENTAIRES</a>
+        <a class="btn col-md-4 mb-2 shadow-lg hoverable" id="commentaire" href="{{path('admin_commentaires')}}">GESTION DES COMMENTAIRES</a>
         
-        <a class="btn btn-secondary col-md-2 mb-2 shadow-lg" href="{{path('admin_membre')}}">GESTION DES MEMBRES</a>
+        <a class="btn col-md-4 mb-2 shadow-lg hoverable" id="membre" href="{{path('admin_membre')}}">GESTION DES MEMBRES</a>
         
 </div>    
 

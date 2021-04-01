@@ -10,6 +10,8 @@
 {
     padding-right:0 !important;
     padding-left:0 !important;
+    padding-top:38px !important;
+    padding-bottom:38px !important;
 }
 
 footer
@@ -528,4 +530,10 @@ footer
 figure
 {
     margin: 0 !important;
+}
+
+#produit, #boutique, #membre, #commentaire, #categorie
+{
+    background-color: grey;
+    color: white;
 }

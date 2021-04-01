@@ -27,7 +27,11 @@
 
 
 
-    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
+    
+    <div class="container col-md-12 mx-auto row justify-content-around">
+      <small class="container col-md-6 mx-auto hoverable" ><button type="submit" class="btn btn-primary text-center my-5" id="produit">AJOUTER UN PRODUIT</button></small>
+      <small class="container col-md-5 mx-auto hoverable"><a href="{{path('admin_produit')}}" class="btn btn-primary text-center my-5" id="produit">RETOUR SUR LES PRODUITS</a>  </small>
+    </div>
 
  {{form_end (formProduit)}}
 

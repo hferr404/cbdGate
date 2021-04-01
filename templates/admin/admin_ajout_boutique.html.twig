@@ -12,8 +12,13 @@
    {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto'} }) }}
     {{ form_row(form.titre, {'attr': {'placeholder': 'Titre'}}) }}
     {{ form_row(form.description, {'attr': {'placeholder': 'Description'}}) }}
-    {{ form_row(form.image, {'attr': {'placeholder': 'Inserer image'}}) }}
+    {{ form_row(form.image, {'attr': {'placeholder': 'Inserer une photo'}}) }}
     
-    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
+    
+    <div class="container col-md-12 mx-auto row justify-content-around">
+      <small class="container col-md-5 mx-auto "><a href="{{path('admin_boutique')}}" class="btn text-center my-5" id="boutique">AJOUTER UNE BOUTIQUE</a>  </small>
+      <small class="container col-md-5 mx-auto hoverable"><a href="{{path('admin_boutique')}}" class="btn text-center my-5" id="boutique">RETOUR SUR LES BOUTIQUE</a>  </small>
+    </div>
+    
    {{form_end(form)}}
 {% endblock %}
