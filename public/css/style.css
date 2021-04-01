@@ -1,143 +1,4 @@
-.conteneur-base
-{
-    min-height: 85vh;
-    padding-right:0 !important;
-    padding-left:0 !important;
-    width: 100% !important;
-    
-}
-.container-fluid
-{
-    padding-right:0 !important;
-    padding-left:0 !important;
-}
-
-footer
-{
-    padding-top: 20vh;
-}
-
-
-.pd
-{
-    margin-top: 20vh;
-    margin-bottom: 20vh;
-    width: 100% !important;
-    border: solid;
-    height: 50vh;
-   
-}
-
-.responimg
-{
-    border: solid;
-    max-height: 50vh;
-}
-
-.btik
-{
-    width: 100%;
-}
-
-.testtext
-{
-  
-    padding-left: 2% !important;
-    width: 100% !important;
-    max-height: 50vh;
-
-   
-}
-
-.icone
-{
-    border: solid;
-    height: 33%;
-}
-
-.dis
-{
-  
-    height: 50vh;
-}
-
-.carou2
-{
-    position: relative;
-
-
-}
-
-.carou2:hover .image {
-    opacity: 0.3;
-  }
-  
-  .carou2:hover .middle {
-    opacity: 1;
-  }
-
-a.carousel-control-prev, a.carousel-control-next {
-    width: 7%;
-  }
-
-
-  span.carousel-control-next-icon {
-   background-color: black;
-  }
-
-
-.picture
-{
-   
-    display: block;
-    transition: .5s ease;
-    backface-visibility: hidden;
-}
-
-.text {
-    
-    color: black;
-    font-size: 30px;
-    padding: 16px 32px;
-    font-weight: bolder;
-
-  }
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
-.picture:hover
-{
-    opacity: 50%;
-}
-
-.ca,.ci
-{
-
-    width: 15vw;
-    height: 35vh;
-}
-
-.titreP
-{
-
-    color: red;
-}
-
-.logos
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around!important;
-    height: 100%;
-
-}
+/**************************BASE.HTML*********************************/
 .row 
 {
     justify-content: center !important;
@@ -146,29 +7,49 @@ a.carousel-control-prev, a.carousel-control-next {
  
 }
 
-#cardeux
+/****************NAV***********************/
+
+
+
+.navbar 
 {
-    padding-bottom: 20vh;
+    background-color: rgb(0, 0, 0);
+   
+    text-align:center !important;
+    color: white;
+    width: 100%;
+    text-transform:uppercase;
+    position: fixed !important;
+    z-index: 3;
+    height: 7vh;
 }
 
-.test
+
+
+
+nav li
 {
-    background-color: whitesmoke;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.gris
+li 
 {
-    width: 30vw;
+    list-style: none;
 }
 
-.desc
-{
+
+nav a:link, a:visited {
+    
+    color: rgb(0, 0, 0);
+    padding: 10px 30px;
     text-align: center;
-    margin-left: 3vw;
+    text-decoration: none;
+  
+
 }
 
 
-/***************************************************************/
 
 .hoverable{
 
@@ -206,72 +87,24 @@ a.carousel-control-prev, a.carousel-control-next {
     transform: translateY(-5px);
 }
   
-  
-  
-.bounce {
-    animation-name: bounce-animation;
-    animation-duration: 2s;
-}
-  
-  
-  
-  /*everything below here is just setting up the page, so dont worry about it */
-  
-  
+/**********************************FIN NAV******************************/
 
-  
-.burger
-{
-    color: white;
-}
-  
-.navbar 
-{
-    background-color: rgb(20, 20, 20);
-    font-weight:600;
-    text-align:center !important;
-    color: white;
-    width: 100%;
-    text-transform:uppercase;
-    position: fixed !important;
-    z-index: 3;
-    height: 10vh;
-}
 
-nav a:link, a:visited {
+
+
+.conteneur-base
+{
+    min-height: 85vh;
+    padding-right:0 !important;
+    padding-left:0 !important;
+    width: 100% !important;
     
-    color: rgb(20, 20, 20);
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-
 }
-.navbar-brand
+.container-fluid
 {
-    margin-right: 0px !important;
+    padding-right:0 !important;
+    padding-left:0 !important;
 }
-#pute
-{
-    display: flex !important;
-    align-items: center !important;
-}
-
-#proute
-{
-    font-size: 1vw;
-}
-
-nav li
-{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-li 
-{
-    list-style: none;
-}
-
 /***********************************************FOOTER******************************************************************************/
 
 
@@ -281,13 +114,6 @@ footer
     min-height: 17vh;
     background-color: rgb(20, 20, 20) !important;
 
-}
-
-.slogan
-{
-    font-size: 25px;
-    text-align: left;
-    
 }
 
 .midfooter
@@ -305,6 +131,8 @@ footer
 {
     padding-top: 1vh;
 }
+
+
 
 .hoverables{
 
@@ -329,7 +157,6 @@ footer
     opacity:0;
     background: -webkit-radial-gradient(center, ellipse, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 80%);
-    /* W3C */
     transition-duration: 0.3s;
     transition-property: transform, opacity;
 }
@@ -342,38 +169,107 @@ footer
     opacity: 1;
     transform: translateY(-1px);
 }
-/*******************************************Boutique***********************************************************/
 
-
-
-
-.titre
+footer
 {
+    padding-top: 20vh;
+}
+
+/**************************************************FIN FOOTER*************/
+
+/****************************************ACCUEIL(INDEX.HTML)*********************/
+
+
+
+
+.pouloulou {
+    padding-top: 6.8vh;
+    display: inline-block;
+    position: relative;
+    display: flex;
+}
+.text {
+    z-index: 1;
+    position: absolute;
     text-align: center;
-    color: rgb(255, 255, 255);
-    justify-content: center;
-    margin-bottom: 2vh;
+    font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     
-}
-
-.titros
-{
-    height: 40vh;
-    background-color: #252525;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    
-}
-
-.portas
-{
-    display: flex;
-    justify-content: center;
+    color: white;
+    width: 50%;
+  
     align-self: center;
-    width: 20%;
 }
+
+.sparent
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/*******************DEUXIEME CAROUSEL****************/
+.carou2
+{
+    position: relative;
+
+
+}
+
+.carou2:hover .image {
+    opacity: 0.3;
+  }
+  
+  .carou2:hover .middle {
+    opacity: 1;
+  }
+
+a.carousel-control-prev, a.carousel-control-next {
+    width: 7%;
+  }
+
+
+
+
+.picture
+{
+   
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.texte {
+    
+    color: black;
+    font-size: 30px;
+    padding: 16px 32px;
+    font-weight: bolder;
+
+  }
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+.picture:hover
+{
+    opacity: 50%;
+}
+
+/********************************FIN INDEX.HTML**************************/
+
+
+/*********************************BOUTIQUE.HTML**************************/
+
 
 
 
@@ -399,14 +295,145 @@ footer
 
 }
 
+.ca,.ci
+{
+
+    width: 15vw;
+    height: 35vh;
+}
+
+.titreP
+{
+
+    color: red;
+}
+
+.logos
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around!important;
+    height: 100%;
+
+}
+
+
+#cardeux
+{
+    padding-bottom: 20vh;
+}
+
+.test
+{
+    background-color: whitesmoke;
+}
+
+.gris
+{
+    width: 30vw;
+}
+
+.desc
+{
+    text-align: center;
+    margin-left: 3vw;
+}
+
+
+/***************************************************************/
+
+
+  
+  
+.bounce {
+    animation-name: bounce-animation;
+    animation-duration: 2s;
+}
+  
+  
+  
+  /*everything below here is just setting up the page, so dont worry about it */
+  
+  
+
+
+
+
+/*******************************************Boutique***********************************************************/
+
+
+
+
+.titre
+{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    margin-bottom: 2vh;
+    
+}
+
+.titros
+{
+    height: 40vh;
+    background-color: #252525;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+
+
+
 .show_hide
 {
     margin-top: 21vh;
     z-index: 5 !important;
     
 }
+/*********************************** Shine */
+#party figure {
+	position: relative;
+    overflow-x: hidden;
+}
+#party figure::before {
+	position: absolute;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(21, 255, 0, 0.151) 0%, rgba(255, 255, 255, 0.274) 100%);
+	background: linear-gradient(to right, rgba(255, 255, 255, 0.199) 0%, rgba(255, 255, 255, 0.24) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+#party figure:hover::before {
+	-webkit-animation: shine 3.75s;
+	animation: shine 3.75s;
+    
+}
+@-webkit-keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
+}
 
-/*******************************************************************/
+figure
+{
+    margin: 0 !important;
+}
+
+
+/*******************************CONTACT.HTML************************************/
 .social-link {
     width: 30px;
     height: 30px;
@@ -468,45 +495,6 @@ footer
 }
 /**************************************************************************/
 
-/* Shine */
-#party figure {
-	position: relative;
-    overflow-x: hidden;
-}
-#party figure::before {
-	position: absolute;
-	left: -75%;
-	z-index: 2;
-	display: block;
-	content: '';
-	width: 50%;
-	height: 100%;
-	background: -webkit-linear-gradient(left, rgba(21, 255, 0, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
-	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-	-webkit-transform: skewX(-25deg);
-	transform: skewX(-25deg);
-}
-#party figure:hover::before {
-	-webkit-animation: shine 3.75s;
-	animation: shine 3.75s;
-    
-}
-@-webkit-keyframes shine {
-	100% {
-		left: 125%;
-	}
-}
-@keyframes shine {
-	100% {
-		left: 125%;
-	}
-}
-
-figure
-{
-    margin: 0 !important;
-}
-
 
 
 /****** scroll bar ****/ 
@@ -559,26 +547,6 @@ figure
   }
 
 
-
-  .pouloulou {
-    padding-top: 6.8vh;
-    display: inline-block;
-    position: relative;
-}
-.pouloulou .text {
-    z-index: 1;
-    position: absolute;
-    text-align: center;
-    font-family: Georgia;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 30%;
-    color: white;
-    width: 70%;
-    font-size: 20vh;
-}
-
 .sky
 {
     padding-left: 1vw;
@@ -600,3 +568,7 @@ h1
 {
     font-family: 'Montserrat', sans-serif;
 }
+
+
+
+
