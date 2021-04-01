@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Produit;
+use App\Entity\Boutiques;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -41,6 +42,10 @@ class FormProduitType extends AbstractType
                 "class" => Categorie::class,
                 "choice_label" => "titre"
            ])
+           ->add('boutiques', EntityType::class, [
+            "class" => Boutiques::class,
+            "choice_label" => "titre"
+       ])
         ;
     }
 

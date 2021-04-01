@@ -39,12 +39,12 @@ Détails du produit
                {{produit.contenu|raw}}
               </p>
               <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
+                  {# <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div> 
+                </div>  #}
                  <small class="text-muted">Posté le {{ produit.dateCreation|date("d/m/Y") }} à {{ produit.dateCreation|date("H:i:s") }} dans la classe
-                catégorie <strong> {{produit.categories.titre}} Vendu par  </strong></small>  
+                catégorie <strong> {{produit.categories.titre}} Vendu par <a href="{{path('main_shop', {'id' : produit.boutiques.id})}}"> {{ produit.boutiques.titre }} </a></strong></small>  
                </div>
             </div>
           </div>
