@@ -9,7 +9,6 @@ use App\Entity\Boutiques;
 use App\Form\AddCommType;
 use App\Entity\Commentaires;
 use App\Form\CommentFormType;
-use App\Form\FormCommentType;
 use App\Entity\CommentProduit;
 use App\Form\CommentProdFormType;
 use App\Repository\ProduitRepository;
@@ -20,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\FormCommentType;
 
 class MainController extends AbstractController
 {

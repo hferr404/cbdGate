@@ -68,18 +68,7 @@ class Boutiques
 
 
 
-    //  public function getProduits(): ?Produit
-    //  {
-    //      return $this->produits;
-    //  }
- 
-    //  public function setCategory(?Produit $produit): self
-    //  {
-    //      $this->produit = $produit;
- 
-    //      return $this;
-    //  }
-
+    
 
 
     public function __construct()
