@@ -515,10 +515,8 @@ class AdminController extends AbstractController
         ]);  
     }
   
-    
-       
 
-        
+            
         /**
          * @Route("/admin/commentaires", name="admin_commentaires")
          * @Route("/admin/comment/{id}/remove", name="admin_remove_comment")

@@ -23,7 +23,7 @@ class SecurityController extends AbstractController
      {
     $membre = new Membre(); 
   
-    $form = $this->createForm(InscriptMembreType::class, $membre); 
+    $form = $this->createForm(InscriptionType::class, $membre); 
 
     $form->handleRequest($request);
 

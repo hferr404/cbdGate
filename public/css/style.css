@@ -28,34 +28,6 @@ footer
    
 }
 
-.pouce
-{
-    background-image: url('/image/info.png');
-    background-repeat: no-repeat; 
-    background-size: contain;  
-}
-
-.pouce2
-{
-    background-image: url('/image/pouce.png'); 
-    background-repeat: no-repeat; 
-    background-size: contain; 
-}
-
-.pouce3
-{
-    background-image: url('/image/truck.png');
-    background-repeat: no-repeat; 
-    background-size: contain; 
-}
-
-.xtet
-{
-    border: solid;
-    max-height: auto;
-    min-height: auto;
-    min-width: auto;
-}
 .responimg
 {
     border: solid;
@@ -255,7 +227,7 @@ a.carousel-control-prev, a.carousel-control-next {
   
 .navbar 
 {
-    background-color: rgba(0,0,0,1);
+    background-color: rgb(20, 20, 20);
     font-weight:600;
     text-align:center !important;
     color: white;
@@ -263,17 +235,21 @@ a.carousel-control-prev, a.carousel-control-next {
     text-transform:uppercase;
     position: fixed !important;
     z-index: 3;
+    height: 10vh;
 }
 
 nav a:link, a:visited {
     
-    color: rgb(255, 255, 255);
+    color: rgb(20, 20, 20);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
 
 }
-  
+.navbar-brand
+{
+    margin-right: 0px !important;
+}
 #pute
 {
     display: flex !important;
@@ -303,7 +279,7 @@ li
 footer
 {
     min-height: 17vh;
-    background-color: black !important;
+    background-color: rgb(20, 20, 20) !important;
 
 }
 
@@ -335,7 +311,7 @@ footer
     backface-visibility: hidden;
     vertical-align: middle;
     position:relative;
-    box-shadow: 0 0 1px rgba(0,0,0,0);
+    box-shadow: 0 0 1px rgb(0, 0, 0);
     tranform: translateZ(0);
     transition-duration: .3s;
     transition-property:transform;
@@ -374,8 +350,6 @@ footer
 .titre
 {
     text-align: center;
-    background-color: black;
-   
     color: rgb(255, 255, 255);
     justify-content: center;
     margin-bottom: 2vh;
@@ -384,8 +358,8 @@ footer
 
 .titros
 {
-    height: 65vh;
-    background-color: black;
+    height: 40vh;
+    background-color: #252525;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -559,13 +533,13 @@ figure
   }
   
   body::-webkit-scrollbar-track {
-    background: rgb(0, 0, 0);        /* color of the tracking area */
+    background: rgb(20, 20, 20);        /* color of the tracking area */
   }
   
   body::-webkit-scrollbar-thumb {
     background-color: rgb(41, 110, 1);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid rgb(0, 0, 0);  /* creates padding around scroll thumb */
+    border: 3px solid rgb(20, 20, 20);  /* creates padding around scroll thumb */
   }
 
 
@@ -585,9 +559,44 @@ figure
   }
 
 
-.caca 
+
+  .pouloulou {
+    padding-top: 6.8vh;
+    display: inline-block;
+    position: relative;
+}
+.pouloulou .text {
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    font-family: Georgia;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    color: white;
+    width: 70%;
+    font-size: 20vh;
+}
+
+.sky
 {
-    padding-top: 5vh;
-    width: 1900px;
-    
+    padding-left: 1vw;
+}
+
+.grostext
+{
+    font-size: 40%;
+}
+
+
+
+h1
+{
+    font-family: 'Bebas Neue', cursive !important;
+}
+
+*
+{
+    font-family: 'Montserrat', sans-serif;
 }
