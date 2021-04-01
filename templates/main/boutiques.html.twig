@@ -13,7 +13,7 @@
 
         {% for data in boutiques %}
 
-        <a href="test-{{ data.id }}" class="list-group-item list-group-item-action newcolor" id="list-{{ data.id }}-list" data-toggle="list" href="#list-{{ data.id }}" role="tab" aria-controls="{{ data.id }}">{{ data.titre|upper}}</a>
+        <a href="" class="list-group-item list-group-item-action newcolor" id="list-{{ data.id }}-list" data-toggle="list" href="#list-{{ data.id }}" role="tab" aria-controls="{{ data.id }}">{{ data.titre|upper}}</a>
         
         {% endfor %}
         </div>
@@ -38,7 +38,7 @@
 <section id="party">
 
     <div class="border-top border-dark" id="test-{{ data.id }}">
-    <a href="{{ path('main_shop', {'id': data.id }) }}"><figure><img class="d-block w-100" src="{{ asset('/images/' ~ data.image) }}" alt="{{ data.titre}}"></figure></a>
+    <a href="{{ path('main_shop', {'id': data.id }) }}" id=""><figure><img class="d-block w-100" src="{{ asset('/images/' ~ data.image) }}" alt="{{ data.titre}}"></figure></a>
     </div>
 
 </section>
