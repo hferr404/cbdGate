@@ -10,7 +10,7 @@ Détails de l'article
 {% block body %}
 
   
-    <div class="container-fluid" style="background-image: url('../image/960x0.jpg'); background-size: cover; height:100vh;">
+    <div class="container-fluid" style="background-image: url('../image/960x0.jpg'); background-size: cover; height:100">
 
     <div class="album py-5" style="background-color: bisk;">
    
@@ -43,8 +43,8 @@ Détails de l'article
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div> #}
-                {# <small class="text-muted">Posté le {{ boutique.dateCreation|date("d/m/Y")}} à {{ boutique.dateCreation|date("H:i:s") }} dans la classe
-                catégorie <strong>  </strong></small>  #}
+                {# <small class="text-muted">Posté le {{ articleTwig.createdAt|date("d/m/Y") }} à {{ articleTwig.createdAt|date("H:i:s") }} dans la classe
+                catégorie <strong> {{articleTwig.category.title}} </strong></small> #}
               </div>
             </div>
           </div>
@@ -64,6 +64,46 @@ Détails de l'article
                      </div>
                   {% endfor %}
               </div>
+
+               <div class="album py-5" style="background-color:bisk;">
+   
+     
+      <div class="row col-md-10 mx-auto">
+
+   
+
+      {% for item in produit %}
+
+      
+        <div class="col-md-4" style="height: 50vh !important;">
+          <div class="card mb-4 shadow-lg">
+           
+            <img src="{{ asset('images/' ~ item.image) }}">
+            
+            <div class="card-body">
+              <h4 class="text-center"> {{ item.titre }}</h4>
+              <p class="card-text">{{ item.contenu|striptags|slice(0,250) }} ...</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                 <a href="{{ path('main_produit', {'id': item.id }) }}" class="btn btn btn-outline-primary mr-1 rounded">En savoir plus</a>
+                 <a href="{{ path('main_shop', {'id': item.boutiques.id }) }}" class="btn btn btn-outline-danger rounded">Revenir à la boutique</a>
+                </div>
+              </div><hr>
+               {# <small class="text-muted">Posté le {{ item.createdAt|date('d/m/Y') }} à {{ item.createdAt|date('H:i:s') }} dans la classe
+                catégorie <strong> {{ item.category.title}} </strong></small> #}
+            </div>
+          </div>
+        </div>
+   
+      {% endfor %}
+       
+       
+        
+    </div>
+    
+  </div>
+
+              <div class="" id="form">
                  
                   {{form_start(formComment, { 'attr' : {"class": "col-md-5 mx-auto"} }) }}
 
@@ -72,11 +112,14 @@ Détails de l'article
                                             'label' : "Votre commentaire" }) }}
 
 
-                      <input class="btn btn-secondary" type="submit" 
+                      <input class="btn btn-primary" type="submit" 
                       value="POSTER"> 
 
 
-                   {{form_end(formComment)}}                     
+              
+                 {{form_end(formComment)}}
+
+             </div>                         
 
         </div>
        
