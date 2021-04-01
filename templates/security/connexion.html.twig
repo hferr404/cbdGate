@@ -5,27 +5,28 @@
 {% endblock %}
 
 {% block body %}
+<div class="contpading">
+    <div class="conteconec radius-2">
+        <h1 class="display-4 text-center">Connexion</h1>
 
- <h1 class="display-4 text-center mt-2">Connexion</h1>
-
- {% if erreur %}
-    <div class="col-md-2 bg-danger py-2 rounded mx-auto text-center text-white"> {{erreur.messageKey|trans(erreur.messageData, 'security')}}</div>
- {% endif %}
-
-
- <form action="{{ path('security_login') }}" method="post" class="col-md-5 mx-auto">
- 
- <div class="form-group">
- <label for="_username">Email</label>
- <input type="text" class="form-control" name="_username" placeholder="Adresse email..." required value="{{ lastUserName }}">
- </div>
- <div class="form-group">
- <label for="_password">Mot de passe</label>
- <input type="password" class="form-control" name="_password" placeholder="Mot de passe..." required>
- </div>
- <input type="submit" value="Connexion" class="btn btn-primary">
- </form>
+        {% if erreur %}
+            <div class="col-md-2 bg-danger rounded mx-auto text-center text-white"> {{erreur.messageKey|trans(erreur.messageData, 'security')}}</div>
+        {% endif %}
 
 
+        <form action="{{ path('security_login') }}" method="post" class="col-md-5 mx-auto">
+        
+        <div class="form-group">
+        <label for="_username">Email</label>
+        <input type="text" class="form-control" name="_username" placeholder="Adresse email..." required value="{{ lastUserName }}">
+        </div>
+        <div class="form-group">
+        <label for="_password">Mot de passe</label>
+        <input type="password" class="form-control" name="_password" placeholder="Mot de passe..." required>
+        </div>
+        <input type="submit" value="Connexion" class="btn btn-primary mx-auto">
+        </form>
+    </div>
+</div>
 
 {% endblock %}
