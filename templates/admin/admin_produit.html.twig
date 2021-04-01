@@ -8,9 +8,9 @@ BACK-OFFICE | GESTION DES PRODUITS
 
 {% block body %}
 
-<div class="container-fluid" style="background">
+<div class="container-fluid" style="">
 
-     <h1 class="display-4 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">GESTION DES PRODUITS</h1>
+     <h1 class="display-4 text-center bg-dark text-white mx-auto rounded shadow-lg">GESTION DES PRODUITS</h1>
      
         {% for message in app.flashes ('success') %}
 
@@ -64,10 +64,11 @@ BACK-OFFICE | GESTION DES PRODUITS
                           <td class="alert badge-warning my-5">{{item2.id}}</td>
                           <td class="alert alert-info">{{item2.titre}}</td>
                           <td class="alert alert-info">{{item2.contenu|striptags|slice(0, 300)}}...</td>
-                          <td class="alert alert-info"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" class="img-admin-articles" style="width:300px;"></td>
+                          <td class="alert alert-info"><a href="{{path('main_produit', {'id' : item2.id})}}"><img class="hoverable" src="{{asset('images/' ~ item2.image)}}" 
+                          class="img-admin-articles" style="width:300px;"></td>
                           <td class="alert alert-warning">{{item2.dateCreation|date('d/m/Y à H:i:s')}}</td>
                           <td class="alert alert-info">{{item2.prix}}€</td>
-                          <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentaires|length}}</i></td>
+                          <td class="alert alert-info">{{item2.categories.titre}} <hr class="shadow-lg"><i class="badge badge-success"> nombre de commentaires: {{item2.commentProduits|length}}</i></td>
                           <td><a href="{{path('admin_edit_produit', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
                           <td><a onclick="return(confirm('Voulez-vous réellement supprimer cet article?'))" href="{{path('admin_remove_produit', {'id' : item2.id})}}" class="btn btn-danger"><i class="fas fa-trash alt"></a></td>
                         </tr>  

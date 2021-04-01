@@ -2,7 +2,7 @@
 
 {% block title %}
 
-Détails de l'article
+Détails du produit
 
 {% endblock %}
 
@@ -10,7 +10,7 @@ Détails de l'article
 {% block body %}
 
   
-    <div class="container-fluid" style="background-image: url('../image/960x0.jpg'); background-size: cover; height:100vh;">
+
 
     <div class="album py-5" style="background-color: bisk;">
    
@@ -19,39 +19,39 @@ Détails de l'article
 
         
         <div class="mx-auto col-md-6">
-        <h2 class="text-center bg-dark text-white py-2 rounded shadow-lg">{{boutique.titre}}</h2>
+        <h2 class="text-center bg-dark text-white py-2 rounded shadow-lg">{{produit.titre}}</h2>
           <div class="card shadow-lg">
              
               
 
               {% for message in app.flashes ('success') %}
 
-              <div class="col-md-4 bg-success p-4 rounded mx-auto text-center text-white mb-2 shadow-lg">
+              <div class="col-md-4 bg-success p-4 rounded mx-auto text-center text-white mb-2 shadow-lg d-flex justify-content-center align-items-center">
                   {{message}}</div>
                
 
               {% endfor %}   
             
-             <img class="" src="{{ asset('images/' ~ boutique.image)|replace({'600/400' : '1000/300'})}}">
+             <img class="ml-3 pl-5" style="width: 70vh; height:65vh;" src="{{ asset('images/' ~ produit.image)}}">
              
             <div class="card-body">
               <p class="card-text">
-               {{boutique.description|raw}}
+               {{produit.contenu|raw}}
               </p>
               <div class="d-flex justify-content-between align-items-center">
-                {# <div class="btn-group">
+                  <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div> #}
-                <small class="text-muted">Posté le {{ boutique.dateCreation|date("d/m/Y")}} à {{ boutique.dateCreation|date("H:i:s") }} dans la classe
-                catégorie <strong>  </strong></small> 
-              </div>
+                </div> 
+                 <small class="text-muted">Posté le {{ produit.dateCreation|date("d/m/Y") }} à {{ produit.dateCreation|date("H:i:s") }} dans la classe
+                catégorie <strong> {{produit.categories.titre}} Vendu par  </strong></small>  
+               </div>
             </div>
           </div>
 
-          <h4 class="text-center bg-dark text-white my-5 py-1 rounded shadow-sm"> Vos réactions </h4>
+          <h4 class="text-center bg-dark text-white my-5 py-1 rounded shadow-sm"> PARATAGEZ VOTRE AVIS </h4>
               <div class="row bg-container bg-light shadow-sm">
-                  {% for comment in boutique.comments %}
+                  {% for comment in produit.commentProduits %}
                      <div class="col-md-5">
                           <span class="badge badge-success"> <strong>{{comment.auteur}}</strong> </span>
                           <i class="text-muted">Posté le {{comment.dateCreation|date("d/m/Y")}} à {{comment.dateCreation|date("H:i:s")}}</i>
@@ -67,12 +67,13 @@ Détails de l'article
                  
                   {{form_start(formComment, { 'attr' : {"class": "col-md-5 mx-auto"} }) }}
 
-                   
+            
+
                       {{form_row(formComment.contenu, { 'attr' : {"placeholder" : "Saisir un commentaire", "rows" : 10},
                                             'label' : "Votre commentaire" }) }}
 
 
-                      <input class="btn btn-secondary" type="submit" 
+                      <input class="btn btn-primary" type="submit" 
                       value="POSTER"> 
 
 
@@ -82,5 +83,4 @@ Détails de l'article
        
     </div> 
   </div>
-  </div>
-{% endblock %}
+{% endblock %} 

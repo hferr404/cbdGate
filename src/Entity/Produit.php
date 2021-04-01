@@ -47,7 +47,6 @@ class Produit
      */
     private $prix;
 
-
    
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produits")
@@ -55,16 +54,32 @@ class Produit
      */
     private $categories;
 
-
+   
+    /**
+     * @ORM\OneToMany(targetEntity=CommentProduit::class, mappedBy="produits")
+     */
+    private $commentProduits;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="produits")
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="produits")
      */
-    private $commentaires;
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Boutiques::class, inversedBy="produits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $boutiques;
+
+
+
+
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
+        
+        $this->commentProduits = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,7 +146,7 @@ class Produit
         return $this;
     }
 
-  
+
 
     public function getCategories(): ?Categorie
     {
@@ -146,34 +161,79 @@ class Produit
     }
 
     /**
-     * @return Collection|Commentaires[]
+     * @return Collection|CommentProduit[]
      */
-    public function getCommentaires(): Collection
+    public function getCommentProduits(): Collection
     {
-        return $this->commentaires;
+        return $this->commentProduits;
     }
 
-    public function addCommentaire(Commentaires $commentaire): self
+    public function addCommentProduit(CommentProduit $commentProduit): self
     {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires[] = $commentaire;
-            $commentaire->setProduits($this);
+        if (!$this->commentProduits->contains($commentProduit)) {
+            $this->commentProduits[] = $commentProduit;
+            $commentProduit->setProduits($this);
         }
 
         return $this;
     }
 
-    public function removeCommentaire(Commentaires $commentaire): self
+    public function removeCommentProduit(CommentProduit $commentProduit): self
     {
-        if ($this->commentaires->removeElement($commentaire)) {
+        if ($this->commentProduits->removeElement($commentProduit)) {
             // set the owning side to null (unless already changed)
-            if ($commentaire->getProduits() === $this) {
-                $commentaire->setProduits(null);
+            if ($commentProduit->getProduits() === $this) {
+                $commentProduit->setProduits(null);
             }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setProduits($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getProduits() === $this) {
+                $comment->setProduits(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBoutiques(): ?Boutiques
+    {
+        return $this->boutiques;
+    }
+
+    public function setBoutiques(?Boutiques $boutiques): self
+    {
+        $this->boutiques = $boutiques;
+
+        return $this;
+    }
+
+
+   
 
    
 }

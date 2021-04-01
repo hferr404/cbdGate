@@ -40,11 +40,30 @@ class Boutiques
     private $commentaires;
 
 
-    /**
-     *  
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="boutiques")  
-     *
-     */
+    
+     /**
+      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="boutiques")
+      */
+     private $comments;
+
+     /**
+      * @ORM\Column(type="string", length=255)
+      */
+     private $adresse;
+
+     /**
+      * @ORM\Column(type="integer")
+      */
+     private $code_postal;
+
+     /**
+      * @ORM\Column(type="string", length=255)
+      */
+     private $website;
+
+     /**
+      * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="boutiques")
+      */
      private $produits;
 
 
@@ -66,6 +85,8 @@ class Boutiques
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->produits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,17 +130,7 @@ class Boutiques
         return $this;
     }
 
-    public function getProduits(): ?Produit
-    {
-        return $this->produits;
-    }
 
-    public function setProduits(?Produit $produit): self
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Commentaires[]
@@ -145,6 +156,102 @@ class Boutiques
             // set the owning side to null (unless already changed)
             if ($commentaire->getBoutiques() === $this) {
                 $commentaire->setBoutiques(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setBoutiques($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getBoutiques() === $this) {
+                $comment->setBoutiques(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(int $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Produit[]
+     */
+    public function getProduits(): Collection
+    {
+        return $this->produits;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produits->contains($produit)) {
+            $this->produits[] = $produit;
+            $produit->setBoutiques($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produit $produit): self
+    {
+        if ($this->produits->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getBoutiques() === $this) {
+                $produit->setBoutiques(null);
             }
         }
 
