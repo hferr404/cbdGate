@@ -42,7 +42,7 @@ $(document).ready(function()
 });
 
 
-var chaine = 'B O U T I Q U E ' ; 
+var chaine = 'B O U T I Q U E S ' ; 
     var nb_car = chaine.length; 
     var tableau = chaine.split("");
     texte = new Array;
@@ -63,4 +63,7 @@ var chaine = 'B O U T I Q U E ' ;
     }
     if(document.getElementById)
     
+
     setInterval("changeMessage()",100);
+
+

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentairesRepository;
+use App\Repository\CommentProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CommentairesRepository::class)
+ * @ORM\Entity(repositoryClass=CommentProduitRepository::class)
  */
-class Commentaires
+class CommentProduit
 {
     /**
      * @ORM\Id
@@ -27,20 +27,15 @@ class Commentaires
      */
     private $contenu;
 
-    
     /**
-     * @ORM\ManyToOne(targetEntity=Boutiques::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $boutiques;
-
-
-    /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dateCreation;
 
-   
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="commentProduits")
+     */
+    private $produits;
 
     public function getId(): ?int
     {
@@ -71,20 +66,6 @@ class Commentaires
         return $this;
     }
 
-   
-
-    public function getBoutiques(): ?Boutiques
-    {
-        return $this->boutiques;
-    }
-
-    public function setBoutiques(?Boutiques $boutiques): self
-    {
-        $this->boutiques = $boutiques;
-
-        return $this;
-    }
-
     public function getDateCreation(): ?\DateTimeInterface
     {
         return $this->dateCreation;
@@ -97,5 +78,15 @@ class Commentaires
         return $this;
     }
 
-   
+    public function getProduits(): ?Produit
+    {
+        return $this->produits;
+    }
+
+    public function setProduits(?Produit $produits): self
+    {
+        $this->produits = $produits;
+
+        return $this;
+    }
 }

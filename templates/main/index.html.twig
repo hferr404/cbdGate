@@ -7,9 +7,30 @@
 <div class="pouloulou">
       <img class="d-block w-100" src="{{ asset('image/bancbd.png') }}">
       <div class="text">
-        <img class="" id="#image-neon" src="{{ asset('image/marijuanawhite.png') }}" width="25%" height="25%" alt="">
+        <img class="w-10"  src="{{ asset('image/marijuanawhite.png') }}" width="50%" height="25%" alt="">
       </div>
     </div>
+
+<br><br>
+
+    <article class="row   sparent">
+
+
+
+
+  <section class="s2 col-md-4">
+  
+  <h1 class="text-center" >Qu'est-ce que CBDGATE</h1>
+
+  <p>Nous sommes un site qui propose de découvrir les meilleurs boutiques de CBD </p>
+
+  </section>
+
+
+
+
+</article>
+<br><br>
 {# FIN BAN #}
   {# CAROUSEL #}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -25,13 +46,13 @@
     </div>
   </div>
 </div>
-
+<br><br>
   {# FIN CAROUSEL #}
 
   {# DESCRIPTION#}
-<article class="row">
+  <article class="row   sparent">
 
-  <section class="col-md-4">
+  <section class="s1 col-md-4">
 
   <h1>100% Légale</h1>
 
@@ -44,16 +65,9 @@
   </section>
 
 
-  <section class="col-md-4">
-  
-  <h1>Qu'est-ce que CBDGATE</h1>
-
-  <p>Nous sommes un site qui proposons de découvrir des boutiques dans votre secteur qui seron</p>
-
-  </section>
 
 
-  <section class="col-md-4">
+  <section class="s3 col-md-4">
   
   <h1>Qu’est-ce que le CBD ?</h1>
 
@@ -62,90 +76,33 @@
   </section>
 
 </article>
-
   {# FIN DESCRIPTION#}
-
+<br><br>
   {# CAROUSEL 2 #}
   <h2 class="text-center" >Découvrez les meilleurs produits</h2>
 
 	<div class="container-fluid ">
-		<div id="demo" class="carousel slide p-4"  data-touch="false" data-interval="false" data-ride="carousel">
-
-			<!-- Indicators -->
-			<ul class="carousel-indicators">
-				<li data-target="#demo" data-slide-to="0" class="active"></li>
-				<li data-target="#demo" data-slide-to="1"></li>
-			</ul>
-
-			<!-- The slideshow -->
-			<div class="carousel-inner ">
-
-				<div class="carousel-item active">			<!-- First Slide -->
+	
 					<div class="d-flex justify-content-around   ">
+
+
+         {% for data in produitBdd %}
           <section class="carou2">
           		
-					 <img class="picture"  src="image/img1.jpg" alt="" width="250" height="250">
+					 <img class="picture"  src="{{ asset('/images/' ~ data.image) }}" alt="" width="250" height="250">
             <div class="middle">
-            <div class="text">Découvrir</div>
+            <a class="texte" href="" >Découvrir</a>
            </div>
-           <h3 class="text-center">mango kush</h3>
+           <h3 class="text-center">{{ data.titre}}</h3>
            </section>
 
-             <section class="carou2">
-          		
-					 <img class="picture"  src="image/img2.jpg" alt="" width="250" height="250">
-            <div class="middle">
-            <div class="text">Découvrir</div>
-           </div>
-           <h3 class="text-center">mango kush</h3>
-           </section>
-
-             <section class="carou2">
-          	
-					 <img class="picture"  src="image/img3.jpg" alt="" width="250" height="250">
-            <div class="middle">
-            <div class="text">Découvrir</div>
-           </div>
-           	<h3 class="text-center">mango kush</h3>
-           </section>
-
-             <section class="carou2">
-          	
-					 <img class="picture"  src="image/img4.jpg" alt="" width="250" height="250">
-            <div class="middle">
-            <div class="text">Découvrir </div>
-           </div>
-           	<h3 class="text-center">mango kush</h3>
-           </section>
- 
-
-
+           {% endfor %}
 
 
 					</div>
 				</div>
 
-				<div class="carousel-item">			<!-- Second Slide -->
-					<div class="d-flex justify-content-around">			<!-- Flex Slide Box -->
-						<img class="rounded-circle" src="http://www.animatedimages.org/data/media/202/animated-dog-image-0712.gif" alt="Dog GIF" width="170" height="170">
-						<img class="rounded-circle" src="http://www.animatedimages.org/data/media/202/animated-dog-image-0712.gif" alt="Dog GIF" width="170" height="170">
-						<img class="rounded-circle" src="http://www.animatedimages.org/data/media/202/animated-dog-image-0712.gif" alt="Dog GIF" width="170" height="170">
-						<img class="rounded-circle" src="http://www.animatedimages.org/data/media/202/animated-dog-image-0712.gif" alt="Dog GIF" width="170" height="170">
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Left and right controls -->
-			<a class="carousel-control-prev" href="#demo" data-slide="prev">
-				<span class=""><img src="image/left.png" alt=""></span>
-			</a>
-			<a class="carousel-control-next" href="#demo" data-slide="next">
-				<span class=""><img src="image/right.png" alt=""> </span>
-			</a>
-		</div>
-	</div>
-{# FIN CAROUSEL 2 #}
+		
 
 
 
