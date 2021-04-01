@@ -645,21 +645,51 @@ h1
 
 .contpading
 {
-    padding-top: 10%;
+padding-top: 15%;
+  
+    display: flex;
+  justify-content: center;
+  align-self: flex-end;
+  
+  
+ 
 }
 
 .conteconec
 {
-    width: 30%;
-    height: 30%;
-    margin-left: 35%;
-    padding: 1%;
+   
+    position: fixed;
+   
+
+    left: center; 
+  top: 20%;
     color: white;
     background-color: rgb(25, 25, 25);
     border-radius: 30px;
+    width: 28%;
+   
+    
 }
 
+.centrer
+{
+    display: flex;
+    justify-content: center;
+}
 
+@media only screen and (max-width: 800px) {
+    .contpading
+     {
+      padding-top: 30%;
+      
+
+    }
+    .conteconec
+    {
+        width: 100% !important;
+        border-radius:0;
+    }
+  }
 /*********************FIN IDENTIFICATION*****************************/
 
 

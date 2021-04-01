@@ -2,11 +2,11 @@
 
 {% block body %}
  
- <div class="contpading">
-    <div class="conteconec radius-2">
+ <div class="contpading  ">
+    <div class="  conteconec radius-2 col-md-4 col-xs-12 ">
 
 
-        <h1>Inscription sur le site</h1>
+        <h1 class="text-center">Inscription sur le site</h1>
 
         {{ form_start(form) }}
 
@@ -22,11 +22,12 @@
 
 
 
-        <button type="submit" class="btn btn-primary">Inscription</button>
+       <div class="centrer"> <button type="submit" class="btn btn-primary d-flex justify-center">Inscription</button></div>
 
          {{ form_end(form) }}
 
 
 </div>
 </div>
+
 {% endblock %}
