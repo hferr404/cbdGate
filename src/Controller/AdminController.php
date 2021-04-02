@@ -370,7 +370,7 @@ class AdminController extends AbstractController
                 $manager->remove($boutique);
                 $manager->flush();
 
-                $this->addFlash('success', "Cette boutique ne peut pas être supprimée car elle est liée à " . $boutique->getProduits()->count() . " article(s)");
+                $this->addFlash('success', "La boutique " . $boutique->getTitre() . " a bien été supprimé");
 
                 return $this->redirectToRoute('admin_boutique');
             }
@@ -449,7 +449,7 @@ class AdminController extends AbstractController
                     $manager->persist($boutique);
                     $manager->flush();
 
-                   $this->addFlash('success', "La catégorie " . $boutique->getTitree() .  " a bien été ajouté");
+                   $this->addFlash('success', "La boutique" . $boutique->getTitre() .  " a bien été ajouté");
 
 
                     return $this->redirectToRoute('admin_boutique');
