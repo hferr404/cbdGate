@@ -6,6 +6,16 @@
 {% block body %}
      <h1 class="display-4 col-md-8 text-center bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | GESTION DES BOUTIQUES</h1>
 
+      {% for label, messages in app.flashes(['danger', 'success']) %}
+
+      {% for oneMessage in messages %}
+
+            <div class="col-md-3 bg-{{label}} p-2 rounded mx-auto text-center text-white mb-3 shadow-lg"> {{ oneMessage }}</div>
+
+      {% endfor %}
+
+    {% endfor %}
+
      <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
         <tr>
             {% for item in colonnes %}
@@ -19,6 +29,7 @@
 
                 {% endif %}
             {% endfor %}
+            
             <th class="bg-primary">EDITER</th>
             <th class="bg-danger">SUPPRIMER</th>
             
