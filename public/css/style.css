@@ -12,6 +12,7 @@
 #navbarSupportedContent
 {
     background-color: rgb(20, 20, 20);
+    border-radius: 0% 0% 5% 5%;;
 }
 
 .navbar 
@@ -24,7 +25,7 @@
     text-transform:uppercase;
     position: fixed !important;
     z-index: 3;
-    height: 10vh;
+    height: 9vh;
 }
 
 
@@ -185,7 +186,13 @@ footer
 /****************************************ACCUEIL(INDEX.HTML)*********************/
 
 
-
+.partenaire
+{
+    text-align: center;
+    font-size: 100%;
+    color: rgb(0, 0, 0);
+    font-size: 4vw;
+}
 
 .pouloulou {
     padding-top: 6.8vh;
@@ -211,10 +218,24 @@ footer
 .sparent
 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    padding: 5%;
 }
 
+.s2, .s3 ,.s1
+{
+    text-align: center;
+    background-color:rgb(20, 20, 20) ;
+    color: white;
+    border-radius: 0.5vw;
+    padding: 2% !important;
+}
+
+.row
+{
+    margin: 0 !important;
+}
 
 /*******************DEUXIEME CAROUSEL****************/
 .carou2
@@ -576,7 +597,7 @@ figure
 
 
 
-h1
+h1, h2 , h3 , h4
 {
     font-family: 'Bebas Neue', cursive !important;
 }
