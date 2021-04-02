@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block body %}
-<div class="back">
- <h1 class="display-5 col-md-8 text-center my-5 pt-1 text-white mx-auto rounded shadow-lg">
+
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
  MODIFIER UN PRODUIT</span></h1>
 
 
-    {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto text-white'} } ) }}
+    {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
 
       
         {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
@@ -25,12 +25,12 @@
 
         {{form_row (formProduit.image)}}
 
-        {{form_row (formProduit.boutiques)}}
 
-    <button type="submit" class="btn btn-secondary shadow-lg">MODIFIER</button>
+
+    <button type="submit" class="btn btn-primary shadow-lg">MODIFIER</button>
 
  {{form_end (formProduit)}}
 
-</div>
+
 
  {% endblock %}

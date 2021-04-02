@@ -14,7 +14,7 @@ class CommentProdFormType extends AbstractType
         $builder
            
             ->add('contenu')
-            ->add('auteur')
+           
         ;
     }
 

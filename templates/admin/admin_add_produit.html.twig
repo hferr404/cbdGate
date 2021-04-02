@@ -8,13 +8,11 @@
 
 {% block body %}
 
-<div class="back">
-
- <h1 class="display-5 col-md-8 text-center my-5 pt-1 text-white mx-auto rounded shadow-lg">
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
  AJOUTER UN PRODUIT</span></h1>
 
 
-    {{form_start (formProduit, {'attr' : {'class' : 'text-white col-md-5 mx-auto'} } ) }}
+    {{form_start (formProduit, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
 
       
         {{form_row (formProduit.titre, {'label' : "Nom produit"} ) }}
@@ -29,10 +27,10 @@
 
 
 
-    <button type="submit" class="btn btn-secondary shadow-lg">AJOUTER</button>
+    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
 
  {{form_end (formProduit)}}
 
-</div>
+
 
  {% endblock %}

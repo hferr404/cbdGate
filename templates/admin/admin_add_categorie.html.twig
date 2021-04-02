@@ -7,22 +7,22 @@
 {% endblock %}
 
 {% block body %}
-<div class="back">
 
- <h1 class="display-5 col-md-8 text-center my-5 pt-1 text-white mx-auto rounded shadow-lg">AJOUTER UNE CATEGORIE</h1>
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+ AJOUTER UNE CATEGORIE</span></h1>
 
 
-    {{form_start (formCatego, {'attr' : {'class' : 'col-md-5 text-white mx-auto'} } ) }}
+    {{form_start (formCatego, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
 
         {{form_row (formCatego.titre, {'label' : "Titre de la catégorie"} ) }}
 
         {{form_row (formCatego.description, {'label' : "Déscription de la catégorie", 'attr' : {'rows' : 6}})}}
 
 
-    <button type="submit" class="btn btn-secondary shadow-lg">AJOUTER</button>
+    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
 
  {{form_end (formCatego)}}
 
-</div>
+
 
  {% endblock %}

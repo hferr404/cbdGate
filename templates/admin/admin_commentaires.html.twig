@@ -56,11 +56,11 @@
         <tr>
         {% for item in colonnes %}
             
-            {% if item == "dateCreation" %}
+            {% if item == "createdAt" %}
 
                 <th class="bg-dark">DATE</th>
 
-            {% elseif item == "auteur" %}
+            {% elseif item == "author" %}
 
                 <th class="bg-dark">AUTEUR</th>
 
@@ -72,7 +72,8 @@
             {% endif %}
 
         {% endfor %}
- 
+
+            <th class="bg-dark">TITRE ARTICLE</th>   
             <th class="bg-primary">EDITER</th>
             <th class="bg-danger">SUPPRIMER</th>
 

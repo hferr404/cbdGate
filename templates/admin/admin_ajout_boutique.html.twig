@@ -6,12 +6,10 @@
 {% endblock %}
 
 {% block body %}
-
-<div class="back">
-    <h1 class="display-4 col-md-8 text-center my-5 text-white mx-auto rounded shadow-lg">BACK-OFFICE | AJOUTER DES BOUTIQUES</h1>
+    <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | AJOUTER DES BOUTIQUES</h1>
 
 
-   {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto text-white'} }) }}
+   {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto'} }) }}
     {{ form_row(form.titre, {'attr': {'placeholder': 'Titre'}}) }}
     {{ form_row(form.description, {'attr': {'placeholder': 'Description'}}) }}
     {{ form_row(form.image, {'attr': {'placeholder': 'Inserer image'}}) }}
@@ -19,8 +17,8 @@
     {{ form_row(form.code_postal, {'attr': {'placeholder': 'Inserer code postal'}}) }}
     {{ form_row(form.website, {'attr': {'placeholder': 'Inserer site web'}}) }}
     
-    <button type="submit" class="btn btn-secondary shadow-lg">AJOUTER</button>
+    <button type="submit" class="btn btn-primary shadow-lg">AJOUTER</button>
    {{form_end(form)}}
-</div>
+
    
 {% endblock %}

@@ -13,13 +13,10 @@ use App\Entity\Boutiques;
 use App\Entity\Categorie;
 use App\Entity\Commentaires;
 use App\Form\CommentFormType;
-use App\Form\FormCommentType;
 use App\Form\FormProduitType;
-use App\Entity\CommentProduit;
 use App\Form\BoutiqueFormType;
 use App\Form\CategorieFormType;
 use App\Form\InscriptMembreType;
-use App\Form\CommentProdFormType;
 use App\Repository\MembreRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommentsRepository;
@@ -587,9 +584,9 @@ class AdminController extends AbstractController
         /**
          * @Route("/admin/comment/{id}/edit", name="admin_edit_commentaires")
          */
-        public function editComment(CommentProduit $comment, Request $request, EntityManagerInterface $manager): Response
+        public function editComment(Commentaires $comment, Request $request, EntityManagerInterface $manager): Response
         {
-            $commentForm = $this->createForm(CommentProdFormType::class, $comment);
+            $commentForm = $this->createForm(CommentFormType::class, $comment);
 
             $commentForm->handleRequest($request);
 
