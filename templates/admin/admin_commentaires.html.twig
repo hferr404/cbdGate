@@ -8,7 +8,38 @@
 
 {% block body %}
 
- <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
+<div class="back">
+<div class="container-fluid" style="">
+
+<div class="lol">
+    <div class="men_ex text-center rounded-right " id="men_ex">
+    
+        <div class="list-group" id="list-tab" role="tablist">
+
+
+                <a href="{{path('admin_boutique')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES BOUTIQUES</a>
+
+                <a href="{{path('admin_produit')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES PRODUITS</a>
+                
+                <a href="{{path('admin_categorie')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES CATEGORIES</a>
+
+                <a href="{{path('admin_commentaires')}}" class="list-group-item list-group-item-action newcolor">GESTION DES COMMENTAIRES</a>
+
+                <a href="{{path('admin_membre')}}" class="list-group-item list-group-item-action newcolor">GESTION DES MEMBRES</a>
+
+            
+        </div>
+
+    </div>
+
+
+        <div class="show_hide" id="show_hide">
+            <img class="sky" src="{{ asset('image/arrow.png') }}" id="jojo2" alt="">
+        </div>
+
+</div>
+
+ <h1 class="display-5 col-md-8 text-center my-5 pt-1 text-white mx-auto rounded shadow-lg">
  BACK-OFFICE | CATEGORIE DES COMMENTAIRES</span></h1>
 
     <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
@@ -66,6 +97,8 @@
 
         </tr>
     </table>    
+
+    </div>
 
 
  {% endblock %}

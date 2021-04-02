@@ -79,23 +79,14 @@ class MainController extends AbstractController
      * @Route("/shop/{id}", name="main_shop")
      * 
      */
-    public function shop(EntityManagerInterface $manager, Request $request, Boutiques $boutique = null, Produit $produit = null): Response
+    public function shop(EntityManagerInterface $manager, Request $request, Boutiques $boutique = null, ProduitRepository $produitRepo): Response
     {
         if (!$boutique) {
             $boutique = new Boutiques;
         }
 
-        if (!$produit) {
-            $produit = new Produit;
 
-
-            return $this->render('main/shop.html.twig', [
-                "produit" => $produit,
-                
-            ]);
-        }
-
-
+        $produit = $produitRepo->findAll();
         
         $user = $this->getUser();
 
