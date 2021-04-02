@@ -7,23 +7,23 @@
 {% endblock %}
 
 {% block body %}
-
-    <h1 class="display-5 col-md-8 text-center my-5 pt-1 bg-dark text-white mx-auto rounded shadow-lg">
-    MODIFICATION ET GESTION DES MEMBRES <small class="badge alert-success mb-1 py-0"><strong> {{membreId}}  {{membreName}} </strong> </small></h1>
+<div class="back">
+    <h1 class="display-5 col-md-8 text-center my-5 pt-1 text-white mx-auto rounded shadow-lg">
+    MODIFICATION ET GESTION DES MEMBRES <small class="badge alert-success mb-1 py-0"><strong> {{membreName}} </strong> </small></h1>
 
     {{form_errors(membreForm)}}
 
     
-    {{form_start (membreForm, {'attr' : {'class' : 'col-md-5 mx-auto'} } ) }}
+    {{form_start (membreForm, {'attr' : {'class' : 'col-md-5 mx-auto text-white'} } ) }}
 
       {{form_row (membreForm.username, {'label' : "Nom du membre"} ) }}
       {{form_row (membreForm.email, {'label' : "Email du membre"}) }}
       {{form_row (membreForm.roles, {'label' : false} ) }}
     
 
-      <button type="submit" class="btn btn-primary">MODIFIER</button>
+      <button type="submit" class="btn btn-secondary">MODIFIER</button>
 
     {{form_end (membreForm)}}  
 
-
+</div>
  {% endblock %}
