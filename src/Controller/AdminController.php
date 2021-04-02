@@ -356,19 +356,34 @@ class AdminController extends AbstractController
      * @Route("/admin/boutique", name="admin_boutique")
      * @Route("/admin/boutique/{id}/remove", name="admin_remove_boutique")
      */
-    public function adminBoutique(EntityManagerInterface $manager, Boutiques $boutiques = null, BoutiquesRepository $repoBoutique): Response
+    public function adminBoutique(EntityManagerInterface $manager, Boutiques $boutique = null, BoutiquesRepository $repoBoutique): Response
 
     {
         $colonnes=$manager->getClassMetadata(Boutiques::class)->getFieldNames();
 
-        $boutiquebdd=$repoBoutique->findAll();
+        $boutiquebdd = $repoBoutique->findAll();
 
-        if($boutiques)
+        if($boutique)
         {
-            $manager->remove($boutiques);
-            $manager->flush();
-            return $this->redirectToRoute('admin_boutique');
-        }
+            if ($boutique->getProduits()->isEmpty())
+            {
+                $manager->remove($boutique);
+                $manager->flush();
+
+                $this->addFlash('success', "Cette boutique ne peut pas être supprimée car elle est liée à " . $boutique->getProduits()->count() . " article(s)");
+
+                return $this->redirectToRoute('admin_boutique');
+            }
+
+            else
+            {
+                $this->addFlash('danger', "Cette boutique ne peut pas être supprimée car elle est liée à " . $boutique->getProduits()->count() . " article(s)");
+
+                return $this->redirectToRoute('admin_boutique');
+            }
+
+         }
+
         return $this->render('admin/admin_boutique.html.twig',[
             'colonnes'=>$colonnes,
             'boutique'=>$boutiquebdd
@@ -433,6 +448,8 @@ class AdminController extends AbstractController
     
                     $manager->persist($boutique);
                     $manager->flush();
+
+                   $this->addFlash('success', "La catégorie " . $boutique->getTitree() .  " a bien été ajouté");
 
 
                     return $this->redirectToRoute('admin_boutique');

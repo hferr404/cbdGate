@@ -46,6 +46,7 @@ class MainController extends AbstractController
     { // $repo = $this->getDoctrine()->getRepository(Article::class)
 
         $produitBdd = $produitRepo->findAll();
+    
 
   
         return $this->render('main/index.html.twig', [
