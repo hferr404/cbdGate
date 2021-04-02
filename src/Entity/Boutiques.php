@@ -77,6 +77,7 @@ class Boutiques
         $this->commentaires = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->produits = new ArrayCollection();
+        
     }
 
     public function getId(): ?int

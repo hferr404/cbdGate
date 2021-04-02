@@ -9,7 +9,10 @@
 
 /****************NAV***********************/
 
-
+#navbarSupportedContent
+{
+    background-color: rgb(20, 20, 20);
+}
 
 .navbar 
 {
@@ -41,7 +44,7 @@ li
 
 nav a:link, a:visited {
     
-    color: rgb(0, 0, 0);
+    color: rgb(20, 20, 20);
     padding: 10px 30px;
     text-align: center;
     text-decoration: none;
@@ -585,15 +588,7 @@ h1
 
 
 
-.back 
-{
-    padding-top: 10%;
-    background-image: url("../image/background.jpg");
-    background-size: cover;
-    height: 100%;
-    position: fixed;
-    width: 100%;
-}
+
 
 
 .lolback
@@ -692,5 +687,18 @@ padding-top: 15%;
   }
 /*********************FIN IDENTIFICATION*****************************/
 
+
+/*************BACKOFF**************/
+
+.back 
+{
+    padding-top: 10vh;
+    background-image: url("../image/background.jpg");
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    
+}
 
 
