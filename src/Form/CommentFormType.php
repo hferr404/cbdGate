@@ -14,9 +14,7 @@ class CommentFormType extends AbstractType
         $builder
             ->add('auteur')
             ->add('contenu')
-            ->add('dateCreation')
-            ->add('produits')
-            ->add('boutiques')
+            
         ;
     }
 

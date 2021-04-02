@@ -35,7 +35,7 @@ Détails du produit
              <img class=" mx-auto" style="width: 50vh; height:50vh;" src="{{ asset('images/' ~ produit.image)}}">
              
             <div class="card-body">
-              <p class="card-text">
+              <p class="card-text text-white">
                {{produit.contenu|raw}}
               </p>
               <div class="d-flex justify-content-between align-items-center text-white">
@@ -44,13 +44,13 @@ Détails du produit
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>  #}
                  <small class="text-white">Posté le {{ produit.dateCreation|date("d/m/Y") }} à {{ produit.dateCreation|date("H:i:s") }} dans la classe
-                catégorie <strong> {{produit.categories.titre}} Vendu par <a href="{{path('main_shop', {'id' : produit.boutiques.id})}}"> {{ produit.boutiques.titre }} </a></strong></small>  
+                catégorie <strong> {{produit.categories.titre}} Vendu par <a class="text-warning" href="{{path('main_shop', {'id' : produit.boutiques.id})}}"> {{ produit.boutiques.titre }} </a></strong></small>  
                </div>
             </div>
           </div>
 
           <h4 class="partage text-center  text-white my-5 py-1 rounded shadow-sm"> PARATAGEZ VOTRE AVIS </h4>
-              <div class="row bg-container bg-light shadow-sm">
+              <div class="row bg-container bg-light shadow-sm" style="background-color : #F0F0F0 !important;">
                   {% for comment in produit.commentProduits %}
                      <div class="col-md-5">
                           <span class="badge badge-success"> <strong>{{comment.auteur}}</strong> </span>
@@ -65,7 +65,7 @@ Détails du produit
                   {% endfor %}
               </div>
                  
-                  {{form_start(formComment, { 'attr' : {"class": "col-md-5 mx-auto"} }) }}
+                  {{form_start(formComment, { 'attr' : {"class": "col-md-5 mx-auto text-white"} }) }}
 
             
 
@@ -73,7 +73,7 @@ Détails du produit
                                             'label' : "Votre commentaire" }) }}
 
 
-                      <input class="btn btn-primary" type="submit" 
+                      <input class="btn btn-secondary" type="submit" 
                       value="POSTER"> 
 
 

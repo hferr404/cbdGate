@@ -4,9 +4,10 @@
     BACK-OFFICE | MODIFICATION DES BOUTIQUES
 {% endblock %}
 {% block body %}
-    <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | MODIFICATION DES BOUTIQUES</h1>
+<div class="back">
+    <h1 class="display-4 col-md-8 text-center my-5 text-white mx-auto rounded shadow-lg">BACK-OFFICE | MODIFICATION DES BOUTIQUES</h1>
     
-    {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto'} }) }}
+    {{ form_start(form, {'attr' : {'class' : 'col-md-5 mx-auto text-white'} }) }}
     {{ form_row(form.titre, {'attr': {'placeholder': 'Titre'}}) }}
     {{ form_row(form.description, {'attr': {'placeholder': 'Description'}}) }}
     {{ form_row(form.image, {'attr': {'placeholder': 'Inserer image'}}) }}
@@ -14,8 +15,10 @@
     {{ form_row(form.code_postal, {'attr': {'placeholder': 'code postal'}}) }}
     {{ form_row(form.website, {'attr': {'placeholder': 'Site web'}}) }}
     
-    
+    <button type="submit" class="btn btn-secondary shadow-lg">MODIFIER LA BOUTIQUE</button>
    {{form_end(form)}}
 
-   <button type="submit" class="btn btn-primary shadow-lg">MODIFIER LA BOUTIQUE</button>
+   
+
+</div>
 {% endblock %}
