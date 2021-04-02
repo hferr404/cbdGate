@@ -708,6 +708,24 @@ padding-top: 15%;
   }
 /*********************FIN IDENTIFICATION*****************************/
 
+/***********************************************************************SHOP.HTML******************************************************/
+
+
+.mosai
+{
+    width: 33%;
+}
+
+.todo
+{
+    background-image: url('../image/960x0.jpg');
+    
+    background-size: cover;
+
+padding-top: 11vh;
+    
+  
+}
 
 /*************BACKOFF**************/
 
@@ -723,3 +741,54 @@ padding-top: 15%;
 }
 
 
+
+.immo
+{
+    display: flex;
+    justify-content: center;
+}
+
+.shopi
+{
+    background-image: url('/image/background.jpg');
+    border-radius: 20px;
+}
+
+.titrus
+{
+    font-size: 100px;
+}
+
+.react 
+{
+    font-size: 70px;
+}
+/***********************************************PRODUIT.HTML*****************************************************************/
+.prodd
+{
+    padding-top: 7vh;
+ 
+}
+
+.proddd
+{
+    background-image: url('/image/background.jpg');
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.albumv
+{
+    background-image: url('../image/960x0.jpg');
+    background-size: cover;
+}
+
+.partage
+{
+    font-size: 50px;
+}
+
+.cardd
+{
+    background: transparent;
+}

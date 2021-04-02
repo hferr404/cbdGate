@@ -10,16 +10,16 @@ Détails de l'article
 {% block body %}
 
   
-    <div class="container-fluid" style="background-image: url('../image/960x0.jpg'); background-size: cover; height:100">
+    <div class="container-fluid todo" style="">
 
-    <div class="album py-5" style="background-color: bisk;">
+    <div class="album " >
    
 
       <div class="row">
 
         
-        <div class="mx-auto col-md-6">
-        <h2 class="text-center bg-dark text-white py-2 rounded shadow-lg">{{boutique.titre}}</h2>
+        <div class="mx-auto col-md-8 shopi">
+        <h2 class="titrus text-center  text-white py-2 rounded shadow-lg">{{boutique.titre}}</h2>
           <div class="card shadow-lg">
              
               
@@ -53,17 +53,17 @@ Détails de l'article
                <div class="album py-5" style="background-color:bisk;">
    
      
-      <div class="row col-md-10 mx-auto">
+      <div class="row col-md-12 mx-auto">
 
    
 
       {% for item in produit %}
 
       
-        <div class="col-md-4" style="height: 50vh !important;">
-          <div class="card mb-4 shadow-lg">
+        <div class=" mosai" >
+          <div class="card mb-3 shadow-lg">
            
-            <img src="{{ asset('images/' ~ item.image) }}">
+           <div class="immo"> <img src="{{ asset('images/' ~ item.image) }}" width="100px" height="100px" class="immo" ></div>
             
             <div class="card-body">
               <h4 class="text-center"> {{ item.titre }}</h4>
@@ -78,8 +78,8 @@ Détails de l'article
                 catégorie <strong> {{ item.category.title}} </strong></small> #}
             </div>
           </div>
-        </div>
-   
+
+   </div>
       {% endfor %}
        
        
@@ -88,12 +88,12 @@ Détails de l'article
     
   </div>
 
-          <h4 class="text-center bg-dark text-white my-5 py-1 rounded shadow-sm"> Vos réactions </h4>
-              <div class="row bg-container bg-light shadow-sm">
+          <h4 class="text-center text-white my-5 py-1 rounded shadow-sm react "> Vos réactions </h4>
+              <div class="row bg-container  shadow-sm">
                   {% for comment in boutique.comments %}
                      <div class="col-md-5">
                           <span class="badge badge-success"> <strong>{{comment.auteur}}</strong> </span>
-                          <i class="text-muted">Posté le {{comment.dateCreation|date("d/m/Y")}} à {{comment.dateCreation|date("H:i:s")}}</i>
+                          <i class=" " style="color:white;">Posté le {{comment.dateCreation|date("d/m/Y")}} à {{comment.dateCreation|date("H:i:s")}}</i>
                      </div>
 
                      <div class="col-md-8">
@@ -111,7 +111,7 @@ Détails de l'article
 
                    
                       {{form_row(formComment.contenu, { 'attr' : {"placeholder" : "Saisir un commentaire", "rows" : 10},
-                                            'label' : "Votre commentaire" }) }}
+                                            'label' : "Votre commentaire"  }) }}
 
 
                       <input class="btn btn-primary" type="submit" 
