@@ -83,9 +83,9 @@
 
             <td class="alert alert-secondary my-5"><span class="badge badge-secondary text-warning"> {{item2.id}} <hr> </span> </td>
             <td class="alert alert-warning my-5"> {{item2.auteur}} <hr> </td>
-            <td class="alert alert-secondary my-5"> {{item2.contenu|striptags}} <hr> <strong> <i class="alert alert-success py-0 shadow-sm">nombre d'article(s) lié(s) à ce commentaire: {{item2.article|length}}</strong></i> </td>
+            <td class="alert alert-secondary my-5"> {{item2.contenu|striptags}} <hr> <strong> <i class="alert alert-success py-0 shadow-sm">nombre d'article(s) lié(s) à ce commentaire: {{item2.produits|length}}</strong></i> </td>
             <td class="alert alert-success my-5"> {{item2.dateCreation|date('d/m/Y à H:i:s')}} <hr></td>
-            <td class="alert alert-warning my-5"> {{item2.produit.titre}} </td>
+            {# <td class="alert alert-warning my-5"> {{item2.produit.titre}} </td> #}
             <td class="alert alert-primary my-5"><a href="{{path('admin_edit_commentaires', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></a></td>
             <td class="alert alert-danger my-5"><a onclick="return(confirm('Voulez-vous réellement supprimer ce commentaire?'))"
              href="{{path('admin_remove_comment', {'id' : item2.id})}}" class="btn btn-danger shadow-sm"><i class="fas fa-trash alt"></a></td>

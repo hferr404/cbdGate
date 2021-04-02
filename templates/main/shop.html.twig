@@ -48,23 +48,6 @@ Détails de l'article
               </div>
             </div>
           </div>
-
-          <h4 class="text-center bg-dark text-white my-5 py-1 rounded shadow-sm"> Vos réactions </h4>
-              <div class="row bg-container bg-light shadow-sm">
-                  {% for comment in boutique.comments %}
-                     <div class="col-md-5">
-                          <span class="badge badge-success"> <strong>{{comment.auteur}}</strong> </span>
-                          <i class="text-muted">Posté le {{comment.dateCreation|date("d/m/Y")}} à {{comment.dateCreation|date("H:i:s")}}</i>
-                     </div>
-
-                     <div class="col-md-8">
-
-                        {{comment.contenu|striptags}} <hr>
-
-                     </div>
-                  {% endfor %}
-              </div>
-
                <div class="album py-5" style="background-color:bisk;">
    
      
@@ -102,6 +85,24 @@ Détails de l'article
     </div>
     
   </div>
+
+          <h4 class="text-center bg-dark text-white my-5 py-1 rounded shadow-sm"> Vos réactions </h4>
+              <div class="row bg-container bg-light shadow-sm">
+                  {% for comment in boutique.comments %}
+                     <div class="col-md-5">
+                          <span class="badge badge-success"> <strong>{{comment.auteur}}</strong> </span>
+                          <i class="text-muted">Posté le {{comment.dateCreation|date("d/m/Y")}} à {{comment.dateCreation|date("H:i:s")}}</i>
+                     </div>
+
+                     <div class="col-md-8">
+
+                        {{comment.contenu|striptags}} <hr>
+
+                     </div>
+                  {% endfor %}
+              </div>
+
+          
 
               <div class="" id="form">
                  

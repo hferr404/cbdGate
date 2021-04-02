@@ -47,21 +47,27 @@
         <tr class="">
             {% for item in colonnes %}
                 {% if item !='id' %}
+
                     <th class="bg-dark col-md-3">{{ item|upper }}</th>
                     
                 {% endif %}
             {% endfor %}
             <th class="bg-primary col-md-3">EDITER</th>
             <th class="bg-danger col-md-3">SUPPRIMER</th>
+
+
         </tr>
         {% for item2 in boutique %}
             <tr>
+                
                 <td>{{item2.titre}}</td>
                 <td>{{item2.description}}</td>
+
                 <td><a href="{{path('main_shop', {'id':  item2.id})}}"><img src="{{asset('images/' ~ item2.image)}}" alt="{{item2.titre}}" style="max-width: 100%"></a></td>
                 <td>{{item2.adresse}}</td>
                 <td>{{item2.CodePostal}}</td>
                 <td>{{item2.website}}</td>
+
                 <td><a href="{{path('admin_edit_boutique', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{path('admin_remove_boutique', {'id':  item2.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cette boutique ?'))"><i class="fas fa-trash-alt"></i></a></td>
             </tr>

@@ -85,7 +85,6 @@ class MainController extends AbstractController
             $boutique = new Boutiques;
         }
 
-
         $produit = $produitRepo->findAll();
         
         $user = $this->getUser();
