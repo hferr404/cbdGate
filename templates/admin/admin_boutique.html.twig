@@ -4,7 +4,17 @@
     BACK-OFFICE | GESTION DES BOUTIQUES
 {% endblock %}
 {% block body %}
-     <h1 class="display-4 col-md-8 text-center bg-dark text-white mx-auto rounded shadow-lg">BACK-OFFICE | GESTION DES BOUTIQUES</h1>
+
+
+      {% for label, messages in app.flashes(['danger', 'success']) %}
+
+      {% for oneMessage in messages %}
+
+            <div class="col-md-3 bg-{{label}} p-2 rounded mx-auto text-center text-white mb-3 shadow-lg"> {{ oneMessage }}</div>
+
+      {% endfor %}
+
+    {% endfor %}
 
      <table class="table table-bordered text-center text-white bg-secondary col-md-10 mx-auto shadow-lg">
         <tr>
@@ -13,30 +23,72 @@
                     <th class="bg-dark">{{ item|upper }}</th>
                 {% elseif item == "website" %}    
 
-                  <th class="bg-dark">SITE WEB </th>   
+<div class="back">
 
-                  {
+<div class="lol">
+    <div class="men_ex text-center rounded-right " id="men_ex">
+    
+        <div class="list-group" id="list-tab" role="tablist">
 
+
+                <a href="{{path('admin_boutique')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES BOUTIQUES</a>
+
+                <a href="{{path('admin_produit')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES PRODUITS</a>
+                
+                <a href="{{path('admin_categorie')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES CATEGORIES</a>
+
+                <a href="{{path('admin_commentaires')}}" class="list-group-item list-group-item-action newcolor">GESTION DES COMMENTAIRES</a>
+
+                <a href="{{path('admin_membre')}}" class="list-group-item list-group-item-action newcolor">GESTION DES MEMBRES</a>
+
+            
+        </div>
+
+    </div>
+
+
+        <div class="show_hide" id="show_hide">
+            <img class="sky" src="{{ asset('image/arrow.png') }}" id="jojo2" alt="">
+        </div>
+
+
+</div>
+
+     <h1 class="display-4 text-center my-5 text-white mx-auto">BACK-OFFICE | GESTION DES BOUTIQUES</h1>
+
+
+    <div class="container col-md-3 mx-auto">
+      <small class="container col-md-3 mx-auto"><a href="{{path('admin_ajout_boutique')}}" class="btn btn-primary text-center my-5 text-white hoverable"> AJOUTER UNE BOUTIQUE </a>  </small>
+    </div>
+
+
+     <table class="table table-bordered text-center text-white bg-secondary row mx-auto shadow-lg">
+        <tr class="">
+            {% for item in colonnes %}
+                {% if item !='id' %}
+
+                    <th class="bg-dark col-md-3">{{ item|upper }}</th>
+                    
                 {% endif %}
             {% endfor %}
-            <th class="bg-primary">EDITER</th>
-            <th class="bg-danger">SUPPRIMER</th>
-            
 
-            
+            <th class="bg-primary col-md-3">EDITER</th>
+            <th class="bg-danger col-md-3">SUPPRIMER</th>
+
+
+
         </tr>
         {% for item2 in boutique %}
             <tr>
                 
                 <td>{{item2.titre}}</td>
                 <td>{{item2.description}}</td>
-                <td>{{item2.image}}</td>
+
+                <td><a href="{{path('main_shop', {'id':  item2.id})}}"><img src="{{asset('images/' ~ item2.image)}}" alt="{{item2.titre}}" style="max-width: 100%"></a></td>
                 <td>{{item2.adresse}}</td>
-                <td>{{item2.codePostal}}</td>
+                <td>{{item2.CodePostal}}</td>
                 <td>{{item2.website}}</td>
 
-
-                <td><img src="{{asset('images/' ~ item2.image)}}" alt="{{item2.titre}}" style="max-width: 400px"></td>
                 <td><a href="{{path('admin_edit_boutique', {'id' : item2.id})}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
                 <td><a href="{{path('admin_remove_boutique', {'id':  item2.id})}}" class="btn btn-danger" onclick="return(confirm('Voulez-vous vraiment supprimer cette boutique ?'))"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
@@ -44,10 +96,6 @@
         {% endfor %}
         
     </table>
-
-    <div class="container col-md-2 mx-auto">
-      <small class="container col-md-2 mx-auto"><a href="{{path('admin_ajout_boutique')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE BOUTIQUE </a>  </small>
-    </div>
     
-
+</div>
 {% endblock %}
