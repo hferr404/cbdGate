@@ -7,8 +7,42 @@
 {% endblock %}
 
 {% block body %}
+<div class="back">
 
- <h1 class="display-4 col-md-8 text-center my-5 bg-dark text-white mx-auto rounded shadow-lg"> CATEGORIES DES ARTICLES</h1>
+  <div class="lol">
+      <div class="men_ex text-center rounded-right " id="men_ex">
+      
+          <div class="list-group" id="list-tab" role="tablist">
+
+
+                  <a href="{{path('admin_boutique')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES BOUTIQUES</a>
+
+                  <a href="{{path('admin_produit')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES PRODUITS</a>
+                  
+                  <a href="{{path('admin_categorie')}}" class="list-group-item list-group-item-action newcolor" >GESTION DES CATEGORIES</a>
+
+                  <a href="{{path('admin_commentaires')}}" class="list-group-item list-group-item-action newcolor">GESTION DES COMMENTAIRES</a>
+
+                  <a href="{{path('admin_membre')}}" class="list-group-item list-group-item-action newcolor">GESTION DES MEMBRES</a>
+
+              
+          </div>
+
+      </div>
+
+
+          <div class="show_hide" id="show_hide">
+              <img class="sky" src="{{ asset('image/arrow.png') }}" id="jojo2" alt="">
+          </div>
+
+  </div>
+
+ <h1 class="display-4 col-md-8 text-center my-5 text-white mx-auto rounded shadow-lg"> CATEGORIES DES CATEGORIES</h1>
+
+  <div class="container col-md-2 mx-auto">
+    <small class="container col-md-2 mx-auto"><a href="{{path('admin_new_categorie')}}" class="btn btn-primary text-center text-white my-5"> AJOUTER UNE CATEGORIE </a>  </small>
+  </div>
+
 
     {% for label, messages in app.flashes(['danger', 'success']) %}
 
@@ -56,10 +90,7 @@
         </tr>
          
       </table>
-      <div class="container col-md-2 mx-auto">
-      <small class="container col-md-2 mx-auto"><a href="{{path('admin_new_categorie')}}" class="btn btn-primary text-center my-5"> AJOUTER UNE CATEGORIE </a>  </small>
-      </div>
-
-       
+      
+</div>      
 
 {% endblock %}    
